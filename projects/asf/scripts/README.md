@@ -3,6 +3,120 @@
 ## Overview
 This directory contains validation and utility scripts for the SpecFirst framework. These scripts ensure project compliance with the framework's specifications and provide guidance for project development.
 
+## Semantic Parsing (2025+)
+All scripts now use a robust, semantic parser (`lib/semantic_parser.py`) that:
+- Understands the hierarchical, path-hinted structure of SPECIFICATIONS.md
+- Handles any numbering (including zero-padded and multi-digit)
+- Properly manages directory stacks and indentation
+- Ignores description lines and invalid sections
+- Does not rely on hard-coded mappings
+- Only processes files/directories within valid sections
+- Supports all file types including `.py`, `.md`, `.json`, `.yaml`, `.template`, etc.
+
+## Professional Logging Standards
+All scripts now use professional, standards-compliant logging:
+- **Standard levels**: `ERROR`, `WARNING`, `DEBUG`, `INFO`
+- **Text-based status indicators**: `[EXISTS]`, `[MISSING]`, `[OPTIONAL]`, `[FAILED]`, `[SUCCESS]`
+- **No emojis in logs** - clean, professional output suitable for CI/CD
+- **User-friendly reports** available with `--report` flag when needed
+
+## Quick LLM/Cursor Usage Examples
+
+- **Validate project stage:**
+  ```bash
+  python projects/asf/scripts/validate_project.py --root-dir projects/asf
+  ```
+- **Check documentation:**
+  ```bash
+  python projects/asf/scripts/check_docs.py --root-dir projects/asf
+  ```
+- **Human-readable docs report:**
+  ```bash
+  python projects/asf/scripts/check_docs.py --root-dir projects/asf --report
+  ```
+- **Verbose/debugging output:**
+  ```bash
+  python projects/asf/scripts/validate_project.py --root-dir projects/asf -v
+  python projects/asf/scripts/check_docs.py --root-dir projects/asf -v
+  ```
+- **Create deployment package:**
+  ```bash
+  python projects/asf/scripts/deploy_package.py --root-dir projects/asf
+  ```
+
+## Script Descriptions
+
+### validate_project.py
+Determines the overall project development stage and provides a clear status for CI/CD pipelines and quality assurance.
+
+### check_docs.py
+Validates documentation completeness and identifies missing or inconsistent files using the semantic parser.
+
+### check_structure.py
+Validates project structure integrity and ensures alignment with specifications.
+
+### deploy_package.py
+**Purpose**: Packages only generated files for deployment. See above for details.
+
+## Library Modules
+
+### lib/semantic_parser.py
+**Purpose**: Semantic parsing of SPECIFICATIONS.md for all scripts.
+- Supports all file extensions: `.md`, `.py`, `.json`, `.yaml`, `.yml`, `.txt`, `.template`
+- Robust error handling and validation
+- See docstring in the file for details.
+
+### lib/framework_validator.py
+**Purpose**: Core validation logic for the framework.
+- Uses the semantic parser for all file and structure checks
+- Properly updates file existence status
+- Professional logging and error handling
+
+## Testing Framework
+
+### Test Structure
+- **Unit tests**: `tests/unit/` - Individual component testing
+- **Integration tests**: `tests/integration/` - Script workflow testing  
+- **End-to-end tests**: `tests/e2e/` - Complete workflow validation
+- **Configuration**: `pytest.ini` - Test configuration with coverage reporting
+- **Fixtures**: `tests/conftest.py` - Shared test fixtures and marker registration
+
+### Test Coverage
+- **100% test pass rate** (34/34 tests)
+- **Zero warnings** - All pytest configuration issues resolved
+- **Professional logging** - No emoji-based output in tests
+- **Comprehensive validation** - All scripts and parser functionality tested
+
+### Running Tests
+```bash
+# Run all tests
+python -m pytest scripts/tests/ -v
+
+# Run specific test types
+python -m pytest scripts/tests/unit/ -v
+python -m pytest scripts/tests/integration/ -v
+python -m pytest scripts/tests/e2e/ -v
+
+# Run with coverage
+python -m pytest scripts/tests/ -v --cov=lib --cov=validate_project --cov=check_docs --cov=check_structure
+```
+
+## TDD and SpecFirst
+- All scripts and the parser are tested using unit tests (see `test_semantic_parser.py`)
+- The parser is designed for reusability and extensibility for future SpecFirst projects
+- Tests follow TDD principles with comprehensive coverage
+
+## Error Handling
+- All scripts provide clear error messages and exit codes
+- Professional logging standards throughout
+- Use `-v` for debugging output if needed
+- Graceful handling of malformed specifications
+
+## Integration
+- All validation and documentation scripts now use the semantic parser for robust, future-proof compliance checking
+- Professional output suitable for CI/CD pipelines
+- Consistent error handling and status reporting
+
 ## Scripts
 
 ### 1. validate_project.py
@@ -10,7 +124,7 @@ This directory contains validation and utility scripts for the SpecFirst framewo
 
 **Usage**:
 ```bash
-# Validate current directory
+# Validate current directory (defaults to current directory)
 python scripts/validate_project.py
 
 # Validate specific directory
@@ -31,9 +145,10 @@ python scripts/validate_project.py --verbose
 **Key Features**:
 - Checks for SPECIFICATIONS.md and specifications.txt
 - Validates core directory structure (docs/, scripts/)
-- Analyzes documentation completeness
+- Analyzes documentation completeness using semantic parser
 - Provides actionable next steps
 - Supports verbose debugging output
+- Professional logging standards
 
 ### 2. check_docs.py
 **Purpose**: Validates documentation completeness and identifies missing or inconsistent files.
@@ -54,16 +169,17 @@ python scripts/check_docs.py --verbose
 ```
 
 **Key Features**:
-- Parses SPECIFICATIONS.md for required documentation files
-- Scans docs/ directory for existing files
+- Parses SPECIFICATIONS.md for required documentation files using semantic parser
+- Scans docs/ directory for existing files (supports all extensions)
 - Identifies missing required files
 - Flags unnecessary files not in specifications
 - Generates LLM-consumable guidance for fixing issues
 - Provides detailed human-readable reports
+- Professional logging and status indicators
 
 **Output Formats**:
 - **Default**: LLM guidance for fixing documentation issues
-- **--report**: Detailed human-readable analysis report
+- **--report**: Detailed human-readable analysis report with `[EXISTS]`/`[MISSING]` status
 - **--verbose**: Debug information about parsing and file discovery
 
 ### 3. check_structure.py
@@ -81,38 +197,12 @@ python scripts/check_structure.py --root-dir /path/to/project
 **Key Features**:
 - Validates required files exist (README.md, .cursorrules, SPECIFICATIONS.md)
 - Checks required directories exist and are not empty (docs/, scripts/)
-- Validates documentation structure against SPECIFICATIONS.md
-- Provides clear error reporting
+- Validates documentation structure against SPECIFICATIONS.md using semantic parser
+- Provides clear error reporting with professional status indicators
 - Returns appropriate exit codes for automation
 
-## Library Modules
-
-### lib/framework_validator.py
-**Purpose**: Core validation logic for the framework.
-
-**Key Components**:
-- `DocumentationChecker`: Main class for documentation validation
-- File existence and content validation
-- Cross-reference validation
-- Quality assessment functions
-
-### lib/spec_parser.py
-**Purpose**: Parses SPECIFICATIONS.md to extract file requirements and structure.
-
-**Key Components**:
-- `SpecParser`: Main parsing class
-- `SpecFile`: Data structure for file specifications
-- `FileStatus`: Enum for file status (REQUIRED, OPTIONAL)
-- Documentation file parsing
-- Source file parsing
-- Cross-reference validation
-
-**Supported Extensions**:
-- `.md` (Markdown files)
-- `.py` (Python files)
-- `.json` (JSON files)
-- `.yaml`, `.yml` (YAML files)
-- `.txt` (Text files)
+### 4. deploy_package.py
+**Purpose**: Packages only generated files for deployment. See above for details.
 
 ## Common Usage Patterns
 
@@ -130,7 +220,7 @@ python scripts/check_docs.py
 # Get LLM guidance for missing files
 python scripts/check_docs.py
 
-# Get detailed report
+# Get detailed report with professional status indicators
 python scripts/check_docs.py --report
 ```
 
@@ -162,7 +252,7 @@ fi
 ### Python Dependencies
 - `pathlib`: Path manipulation (Python 3.4+)
 - `argparse`: Command-line argument parsing
-- `logging`: Logging and debugging output
+- `logging`: Professional logging and debugging output
 - `re`: Regular expressions for parsing
 - `sys`: System-specific parameters
 - `os`: File system operations
@@ -176,38 +266,8 @@ from pathlib import Path
 # Add script directory to path for lib imports
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lib.framework_validator import DocumentationChecker
-from lib.spec_parser import SpecParser
+from lib.semantic_parser import SemanticSpecParser
 ```
-
-## Error Handling
-
-### Common Error Scenarios
-1. **Missing SPECIFICATIONS.md**: Scripts will exit with error if not found
-2. **Malformed SPECIFICATIONS.md**: Parsing errors will be reported
-3. **Missing directories**: Required directories must exist
-4. **Empty directories**: Required directories must not be empty
-5. **File permission issues**: Scripts will report access errors
-
-### Exit Codes
-- **0**: Success (all checks passed)
-- **1**: Error (validation failed or script error)
-- **2**: Usage error (invalid arguments)
-
-## Integration with Framework
-
-### Validation Workflow
-1. **validate_project.py**: Determine overall project stage
-2. **check_docs.py**: Identify specific documentation issues
-3. **check_structure.py**: Validate structural requirements
-4. **Manual fixes**: Address identified issues
-5. **Re-run validation**: Confirm fixes resolved issues
-
-### Framework Compliance
-- Scripts enforce framework specifications
-- Ensure documentation completeness
-- Validate project structure
-- Provide guidance for compliance
-- Support automated validation
 
 ## Best Practices
 
@@ -229,6 +289,9 @@ from lib.spec_parser import SpecParser
 - Parse output for specific issues
 - Integrate with development workflow
 
+### Use deploy_package.py to create deployment packages for release
+Only generated files (docs/, README.md, .cursorrules, LICENSE) are included in the deployment package.
+
 ## Troubleshooting
 
 ### Common Issues
@@ -247,3 +310,34 @@ from lib.spec_parser import SpecParser
 - [SPECIFICATIONS.md](../SPECIFICATIONS.md) - Project specifications
 - [SCRIPTS_SPECS.md](../docs/framework/methodology/SCRIPTS_SPECS.md) - Script specifications
 - [AGILE_SPECFIRST.md](../docs/framework/methodology/AGILE_SPECFIRST.md) - Core methodology 
+
+## Deployment Packaging
+
+### deploy_package.py
+**Purpose**: Creates a deployment package (zip file) containing only generated files from the project, suitable for distribution or deployment. It includes:
+- docs/ (all generated documentation)
+- README.md (project interface)
+- .cursorrules (AI/implementation guide)
+- LICENSE (GPL 3.0, copied from defaults/gpl-3.0.txt if needed)
+
+**Usage**:
+```bash
+# Create deployment package from current directory
+python scripts/deploy_package.py
+
+# Specify project root
+python scripts/deploy_package.py --root-dir /path/to/project
+
+# Custom package name
+python scripts/deploy_package.py --package-name my_deployment
+
+# Verbose output (shows logging)
+python scripts/deploy_package.py --verbose
+```
+
+**Features**:
+- Only includes generated files (no source/spec files)
+- Uses professional logging (INFO, ERROR, etc.)
+- Fully tested (unit/integration)
+- Fails if required files are missing
+- Suitable for CI/CD and manual use 

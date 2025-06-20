@@ -2,12 +2,24 @@
 # Copyright (c) 2025, Jaime Moraga (jmoraga@mines.edu)
 
 """
-Comprehensive Project Validator for the SpecFirst Framework.
-
 This script analyzes a project's structure and content to determine its current
 stage of development (e.g., "Ready to Generate", "In Progress", "Complete").
 It consolidates checks for core file structure and documentation completeness
 to provide a single, authoritative validation status.
+
+Usage:
+  python projects/asf/scripts/validate_project.py [--root-dir <dir>] [-v]
+
+- If --root-dir is not provided, the current directory is used.
+- The script will succeed (exit 0) if run in a valid project root, or fail (exit 1) otherwise.
+
+LLM/Cursor Usage Examples:
+
+# From the workspace root:
+python projects/asf/scripts/validate_project.py --root-dir projects/asf
+
+# For verbose/debugging output:
+python projects/asf/scripts/validate_project.py --root-dir projects/asf -v
 """
 
 import sys
@@ -21,7 +33,7 @@ import re
 # It adds the script's own directory to the path, allowing the import.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lib.framework_validator import DocumentationChecker
-from lib.spec_parser import SpecParser
+from lib.semantic_parser import SemanticSpecParser
 
 
 # --- Main Project Validator ---
@@ -53,7 +65,7 @@ class ProjectValidator:
         self.has_spec_md = (self.root_dir / "SPECIFICATIONS.md").is_file()
 
         if not self.has_spec_txt and not self.has_spec_md:
-            self.logger.error("🚫 Not a SpecFirst project: Neither specifications.txt nor SPECIFICATIONS.md found.")
+            self.logger.error("Not a SpecFirst project: Neither specifications.txt nor SPECIFICATIONS.md found.")
             sys.exit(1)
 
         self._check_core_structure()
@@ -72,7 +84,7 @@ class ProjectValidator:
     def _check_source_files(self) -> bool:
         """Check that all required source files exist based on SPECIFICATIONS.md."""
         try:
-            spec_parser = SpecParser(self.root_dir, self.logger)
+            spec_parser = SemanticSpecParser(self.root_dir, self.logger)
             required_files = spec_parser.parse_source_files()
             if not required_files:
                 self.logger.warning("Could not parse required source files from SPECIFICATIONS.md.")
@@ -91,28 +103,33 @@ class ProjectValidator:
             self.logger.warning(f"Missing required source files: {', '.join(missing_files)}")
             return False
 
-        self.logger.debug("✅ All required source files exist.")
+        self.logger.debug("All required source files exist.")
         return True
 
     def _check_core_structure(self) -> None:
         """Check for core files like README, .cursorrules, and docs/scripts directories."""
-        self.logger.debug(f"--- Core Structure Check ---")
-        self.logger.debug(f"Project Root: {self.root_dir}")
+        if self.verbose:
+            print(f"--- Core Structure Check ---")
+            print(f"Project Root: {self.root_dir}")
 
         # Files in the project root
         self.readme_ok = (self.root_dir / "README.md").is_file()
-        self.logger.debug(f"Checking for README.md in project root: {'Found' if self.readme_ok else 'Missing'}")
+        if self.verbose:
+            print(f"Checking for README.md in project root: {'Found' if self.readme_ok else 'Missing'}")
 
         self.rules_ok = (self.root_dir / ".cursorrules").is_file()
-        self.logger.debug(f"Checking for .cursorrules in project root: {'Found' if self.rules_ok else 'Missing'}")
+        if self.verbose:
+            print(f"Checking for .cursorrules in project root: {'Found' if self.rules_ok else 'Missing'}")
 
         # Directories within the project root
         self.docs_dir_ok = (self.root_dir / "docs").is_dir()
-        self.logger.debug(f"Checking for docs/ dir in project: {'Found' if self.docs_dir_ok else 'Missing'}")
+        if self.verbose:
+            print(f"Checking for docs/ dir in project: {'Found' if self.docs_dir_ok else 'Missing'}")
 
         self.scripts_dir_ok = (self.root_dir / "scripts").is_dir()
-        self.logger.debug(f"Checking for scripts/ dir in project: {'Found' if self.scripts_dir_ok else 'Missing'}")
-        self.logger.debug(f"--------------------------")
+        if self.verbose:
+            print(f"Checking for scripts/ dir in project: {'Found' if self.scripts_dir_ok else 'Missing'}")
+            print(f"--------------------------")
 
     def _print_report(self) -> None:
         """Analyzes check results and prints a report on the project stage."""
@@ -177,8 +194,8 @@ class ProjectValidator:
         print("-" * 40)
 
 def main():
-    parser = argparse.ArgumentParser(description="Validates the project's stage based on SpecFirst rules.")
-    parser.add_argument("--root-dir", default=".", help="Project root directory.")
+    parser = argparse.ArgumentParser(description="Validates the project's stage based on SpecFirst rules.\n\nIf --root-dir is not provided, the current directory is used. The script will succeed (exit 0) if run in a valid project root, or fail (exit 1) otherwise.")
+    parser.add_argument("--root-dir", default=".", help="Project root directory (default: current directory).")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output.")
     args = parser.parse_args()
 

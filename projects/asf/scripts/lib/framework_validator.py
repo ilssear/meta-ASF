@@ -13,7 +13,7 @@ import logging
 from pathlib import Path
 from typing import Dict, List, Set
 
-from .spec_parser import SpecParser, SpecFile, FileStatus
+from lib.semantic_parser import SemanticSpecParser, FileSpec, FileStatus
 
 # --- Documentation Completeness Checker ---
 class DocumentationChecker:
@@ -23,7 +23,7 @@ class DocumentationChecker:
         self.specs_file = root_dir / "SPECIFICATIONS.md"
         self.docs_dir = root_dir / "docs"
         self.logger = logger
-        self.specified_files: Dict[str, SpecFile] = {}
+        self.specified_files: Dict[str, FileSpec] = {}
         self.existing_files: Set[str] = set()
         self.missing_required_files: Set[str] = set()
         self.unnecessary_files: Set[str] = set()
@@ -61,7 +61,7 @@ class DocumentationChecker:
 
         # Get required source files from SPECIFICATIONS.md
         try:
-            spec_parser = SpecParser(self.root_dir, self.logger)
+            spec_parser = SemanticSpecParser(self.root_dir, self.logger)
             required_source_files = spec_parser.parse_source_files()
             if not required_source_files:
                 self.logger.warning("Could not parse any methodology source files from SPECIFICATIONS.md.")
@@ -88,13 +88,13 @@ class DocumentationChecker:
             self.logger.warning(f"Empty source methodology files: {', '.join(empty_source_files)}")
             return False
 
-        self.logger.debug("✅ All source methodology files exist and are non-empty.")
+        self.logger.debug("All source methodology files exist and are non-empty.")
         return True
 
     def parse_specifications(self) -> None:
         """Parse SPECIFICATIONS.md to identify required documentation files."""
         try:
-            spec_parser = SpecParser(self.root_dir, self.logger)
+            spec_parser = SemanticSpecParser(self.root_dir, self.logger)
             self.specified_files = spec_parser.parse_documentation_files()
         except Exception as e:
             self.logger.error(f"Failed to parse SPECIFICATIONS.md: {e}")
@@ -119,6 +119,10 @@ class DocumentationChecker:
         self.logger.debug(f"{len(self.existing_files)} existing files found in docs/:")
         for p in sorted(list(self.existing_files)):
             self.logger.debug(f"  - {p}")
+
+        # Update the exists field for each specified file
+        for path, file_spec in self.specified_files.items():
+            file_spec.exists = path in self.existing_files
 
         self.missing_required_files = required_paths - self.existing_files
         self.unnecessary_files = self.existing_files - specified_paths

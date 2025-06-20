@@ -18,7 +18,7 @@ import re
 
 # This is the standard, robust way to import from a subdirectory (lib)
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from lib.spec_parser import SpecParser
+from lib.semantic_parser import SemanticSpecParser
 
 # --- Configuration ---
 
@@ -54,7 +54,7 @@ class StructureChecker:
 
     def run_checks(self) -> None:
         """Execute all configured file and directory checks."""
-        print(f"🔍 Checking project structure at: {self.root_dir}\n")
+        print(f"Checking project structure at: {self.root_dir}\n")
         self._check_files()
         self._check_directories()
         self._check_doc_structure()
@@ -64,25 +64,25 @@ class StructureChecker:
         for file_name in REQUIRED_FILES:
             file_path = self.root_dir / file_name
             if file_path.is_file():
-                self.successes.append(f"✅ Found required file: {file_name}")
+                self.successes.append(f"[EXISTS] Found required file: {file_name}")
             else:
-                self.errors.append(f"❌ Missing required file: {file_name}")
+                self.errors.append(f"[MISSING] Missing required file: {file_name}")
 
     def _check_directories(self) -> None:
         """Check for the existence and content of all required directories."""
         for dir_name, config in REQUIRED_DIRS.items():
             dir_path = self.root_dir / dir_name
             if not dir_path.is_dir():
-                self.errors.append(f"❌ Missing required directory: {dir_name}/")
+                self.errors.append(f"[MISSING] Missing required directory: {dir_name}/")
                 continue
 
-            self.successes.append(f"✅ Found required directory: {dir_name}/")
+            self.successes.append(f"[EXISTS] Found required directory: {dir_name}/")
 
             if config.get("check_empty", False):
                 if not any(dir_path.iterdir()):
-                    self.errors.append(f"    - ❌ Directory is empty: {dir_name}/")
+                    self.errors.append(f"    - [EMPTY] Directory is empty: {dir_name}/")
                 else:
-                    self.successes.append(f"    - ✅ Directory is not empty: {dir_name}/")
+                    self.successes.append(f"    - [EXISTS] Directory is not empty: {dir_name}/")
     
     def get_required_doc_files(self) -> List[str]:
         """
@@ -93,11 +93,11 @@ class StructureChecker:
         """
         spec_path = self.root_dir / "SPECIFICATIONS.md"
         if not spec_path.is_file():
-            self.errors.append("❌ SPECIFICATIONS.md not found, cannot check doc structure.")
+            self.errors.append("[ERROR] SPECIFICATIONS.md not found, cannot check doc structure.")
             return []
 
         try:
-            spec_parser = SpecParser(self.root_dir)
+            spec_parser = SemanticSpecParser(self.root_dir)
             specified_files = spec_parser.parse_documentation_files()
             
             # Extract only required files
@@ -108,7 +108,7 @@ class StructureChecker:
             
             return required_files
         except Exception as e:
-            self.errors.append(f"❌ Failed to parse SPECIFICATIONS.md: {e}")
+            self.errors.append(f"[ERROR] Failed to parse SPECIFICATIONS.md: {e}")
             return []
 
     def _check_doc_structure(self):
@@ -119,14 +119,14 @@ class StructureChecker:
         if not required_files:
             return # Errors already logged by get_required_doc_files
 
-        self.successes.append("\n📄 Checking documentation structure based on SPECIFICATIONS.md...")
+        self.successes.append("\n[INFO] Checking documentation structure based on SPECIFICATIONS.md...")
 
         for doc_file_path in required_files:
             full_path = self.root_dir / doc_file_path
             if full_path.is_file():
-                self.successes.append(f"    - ✅ Found required doc file: {doc_file_path}")
+                self.successes.append(f"    - [EXISTS] Found required doc file: {doc_file_path}")
             else:
-                self.errors.append(f"    - ❌ Missing required doc file: {doc_file_path}")
+                self.errors.append(f"    - [MISSING] Missing required doc file: {doc_file_path}")
 
     def print_report(self) -> int:
         """
@@ -139,15 +139,14 @@ class StructureChecker:
             print(msg)
         
         if self.errors:
-            print("\n" + "-"*20 + "\n")
-            print("🚨 Found errors:\n")
+            print("[ERROR] Found errors:\n")
             for error in self.errors:
-                print(error)
-            print(f"\n🚫 Project structure is INVALID.")
+                print(f"  {error}")
+            print(f"\n[FAILED] Project structure is INVALID.")
             return 1
-        
-        print("\n🎉 Project structure is VALID.")
-        return 0
+        else:
+            print("\n[SUCCESS] Project structure is VALID.")
+            return 0
 
 # --- Main Execution ---
 

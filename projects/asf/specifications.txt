@@ -76,13 +76,15 @@ Every SpecFirst project has:
 - specifications.txt - Your project plan (in plain English or your native language)
 - SPECIFICATIONS.md - Your project plan but more formal after coaching and support from the AI
 - docs/README.md - Overview and navigation guide for the documentation structure
+- deploy_package.py - Script to create a deployment package (zip) with only generated files (docs/, README.md, .cursorrules, LICENSE)
 
 ## Getting Started
 1. Write your specification
 2. Get AI help to refine it
 3. Validate and Generate
 4. Start building
-5. Get help when needed
+5. Create a deployment package using deploy_package.py (only generated files are included)
+6. Get help when needed
 
 ## Why It Works
 - Clear requirements = better software
@@ -93,6 +95,7 @@ Every SpecFirst project has:
 - Cleaner documentation and code = it can be taken over by experts and other third parties
 - **Test-Driven Development (TDD):** Write a test before you write the code! This helps you know when you're done and keeps your project working as you add new features.
 - **Quick Feedback:** Show your work to users (or yourself!) early and often. Fix problems before they get big. The faster you get feedback, the better your project will be.
+- **Deployment Packaging:** Use deploy_package.py to create a zip file for release. Only generated files are included for clean, professional distribution.
 
 ## References
 - methodology/AGILE_SPECFIRST.md - How it works

@@ -6,6 +6,17 @@ Documentation Checker for SpecFirst Framework
 
 This script validates the documentation structure against SPECIFICATIONS.md,
 ensuring all required files exist and are properly formatted.
+
+LLM/Cursor Usage Examples:
+
+# From the workspace root:
+python projects/asf/scripts/check_docs.py --root-dir projects/asf
+
+# For a detailed human-readable report:
+python projects/asf/scripts/check_docs.py --root-dir projects/asf --report
+
+# For verbose/debugging output:
+python projects/asf/scripts/check_docs.py --root-dir projects/asf -v
 """
 
 import os
@@ -17,7 +28,7 @@ from typing import Dict, List, Set
 
 # This is the standard, robust way to import from a subdirectory (lib)
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from lib.spec_parser import SpecParser, SpecFile, FileStatus, SUPPORTED_EXTENSIONS
+from lib.semantic_parser import SemanticSpecParser, FileSpec, FileStatus, SUPPORTED_EXTENSIONS
 
 # --- Main Application Class ---
 
@@ -37,7 +48,7 @@ class DocumentationChecker:
         self.logger = logging.getLogger(__name__)
 
         # Data stores
-        self.specified_files: Dict[str, SpecFile] = {}
+        self.specified_files: Dict[str, FileSpec] = {}
         self.existing_files: Set[str] = set()
         self.missing_files: Set[str] = set()
         self.unnecessary_files: Set[str] = set()
@@ -45,7 +56,7 @@ class DocumentationChecker:
     def parse_specifications(self) -> None:
         """Parse SPECIFICATIONS.md to extract all specified documentation files."""
         try:
-            spec_parser = SpecParser(self.root_dir, self.logger)
+            spec_parser = SemanticSpecParser(self.root_dir, self.logger)
             self.specified_files = spec_parser.parse_documentation_files()
         except Exception as e:
             self.logger.error(f"Error parsing SPECIFICATIONS.md: {e}")
@@ -104,16 +115,16 @@ class DocumentationChecker:
         all_dirs = sorted({Path(p).parent.as_posix() for p in all_specified_paths})
         for dir_path in all_dirs:
             dir_exists = (self.root_dir / dir_path).exists()
-            status = "✅" if dir_exists else "❌"
+            status = "[EXISTS]" if dir_exists else "[MISSING]"
             report.append(f"{status} {dir_path}/")
 
             files_in_dir = sorted(p for p in all_specified_paths if Path(p).parent.as_posix() == dir_path)
             for file_path in files_in_dir:
                 docfile = self.specified_files[file_path]
                 if docfile.status == FileStatus.OPTIONAL:
-                    file_status = "✅" if docfile.exists else "⚪"
+                    file_status = "[EXISTS]" if docfile.exists else "[OPTIONAL]"
                 else:
-                    file_status = "✅" if docfile.exists else "❌"
+                    file_status = "[EXISTS]" if docfile.exists else "[MISSING]"
                 report.append(f"  {file_status} {Path(file_path).name}")
         report.append("")
 
@@ -152,19 +163,19 @@ class DocumentationChecker:
         guidance = ["# LLM Task: Synchronize Documentation Files\n"]
         
         if self.missing_files:
-            guidance.append("## 📝 Plan: Create Missing Files")
+            guidance.append("## Plan: Create Missing Files")
             guidance.append("Based on `SPECIFICATIONS.md`, the following required files are missing. Your task is to generate the content for each file based on its specified purpose.\n")
             
             for file_path in sorted(list(self.missing_files)):
                 docfile = self.specified_files.get(file_path)
-                guidance.append(f"### 📄 File to Create: `{file_path}`")
+                guidance.append(f"### File to Create: `{file_path}`")
                 
                 guidance.append("\n**Content Specification:**")
                 guidance.append("- Follow instructions from `SPECIFICATIONS.md` and linked files.")
                 guidance.append("\n---\n")
 
         if self.unnecessary_files:
-            guidance.append("## 🗑️ Plan: Remove Unnecessary Files")
+            guidance.append("## Plan: Remove Unnecessary Files")
             guidance.append("The following files exist in the `docs/` directory but are not mentioned in `SPECIFICATIONS.md`. They should be removed.\n")
             guidance.append("```sh")
             for file in sorted(list(self.unnecessary_files)):

@@ -973,3 +973,33 @@ For detailed workflow steps, triggers, and examples, refer to:
 - After each specification refinement, write or update tests to match the new requirements.
 - After each implementation phase, run tests and seek user feedback before moving to the next stage.
 - Use test results and feedback to update specifications and improve the project iteratively. 
+
+## Deployment Packaging
+
+A deployment package must be created using the deploy_package.py script. This package includes only generated files:
+- docs/ (all generated documentation)
+- README.md (project interface)
+- .cursorrules (AI/implementation guide)
+- LICENSE (GPL 3.0, copied from defaults/gpl-3.0.txt if needed)
+
+The deploy_package.py script is REQUIRED and must be used for all official deployments. It validates the presence of all required generated files, uses professional logging, and is fully tested.
+
+### Usage Example
+```bash
+python scripts/deploy_package.py --root-dir projects/asf
+```
+
+### Success Criteria (add to list)
+- Deployment package contains only generated files
+- Package is created using deploy_package.py
+- All required files are present in the package
+- Package creation is logged and tested
+
+### Documentation Structure (add to relevant section)
+- Only generated files are included in deployment packages
+- Source/specification files (SPECIFICATIONS.md, specifications.txt, scripts/, etc.) are NOT included in the deployment package
+
+### Workflow Integration (add to deployment section)
+- After validation and documentation generation, run deploy_package.py to create the deployment package for distribution or release
+
+--- 

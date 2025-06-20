@@ -364,10 +364,12 @@ Requirements:
     # .cursorrules - Agile SpecFirst Development Framework
 
     <!--
+    This file is generated from SPECIFICATIONS.md. DO NOT EDIT DIRECTLY.
+
     This file defines the behavior and rules for AI-assisted development in Cursor IDE.
     It is a framework-level configuration that guides AI behavior across all projects using the SpecFirst methodology.
-    Last updated: 2025-06-20
-    Version: 1.0.1
+    Last generated: [TIMESTAMP]
+    Version: [VERSION]
     -->
 
     ## Overview
