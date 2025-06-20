@@ -59,6 +59,97 @@
                 "clone": "git clone {repository_url}",
                 "config": "git config --list"
             }
+        },     
+        "version": "1.0.1",
+        "environment": {
+            "name": "development",
+            "debug": true,
+            "log_level": "DEBUG",
+            "node_env": "development"
+        },
+        "application": {
+            "name": "asf",
+            "description": "Agile SpecFirst Development Framework",
+            "version": "1.0.1",
+            "author": "Jaime Moraga (jmoraga@mines.edu)",
+            "license": "MIT",
+            "repository": "https://github.com/username/meta-ASF"
+        },
+        "development": {
+            "auto_reload": true,
+            "debug_toolbar": true,
+            "profiling": false,
+            "hot_reload": true,
+            "linting": {
+                "enabled": true,
+                "tools": ["flake8", "black", "mypy"],
+                "auto_fix": true
+            }
+        },
+        "testing": {
+            "test_database": "test_asf.db",
+            "coverage_threshold": 80,
+            "timeout": 30,
+            "parallel": true,
+            "reporting": {
+                "html": true,
+                "xml": true,
+                "coverage": true
+            }
+        },
+        "specifications": {
+            "auto_validate": true,
+            "validation_interval": 300,
+            "backup_specs": true,
+            "version_control": true,
+            "templates": {
+                "enabled": true,
+                "path": "./templates",
+                "auto_generate": true
+            }
+        },
+        "documentation": {
+            "auto_generate": true,
+            "format": "markdown",
+            "include_examples": true,
+            "include_diagrams": true,
+            "search_enabled": true,
+            "versioning": true
+        },
+        "workflow": {
+            "pera_cycles": {
+                "enabled": true,
+                "auto_tracking": true,
+                "feedback_integration": true
+            },
+            "incremental_development": {
+                "enabled": true,
+                "max_change_time": 7200,
+                "auto_validation": true
+            },
+            "tdd": {
+                "enabled": true,
+                "coverage_required": true,
+                "auto_test_generation": false
+            }
+        },
+        "ai_integration": {
+            "enabled": true,
+            "provider": "openai",
+            "model": "gpt-4",
+            "temperature": 0.7,
+            "max_tokens": 2000,
+            "api_key": "your-openai-api-key",
+            "code_generation": {
+                "enabled": true,
+                "validation_required": true,
+                "auto_testing": true
+            }
+        },
+
+        "specification_refinement": {
+            "enabled": true,
+            "auto_suggestions": true
         },
         "verification_commands": {
             "python_version": "python --version",
@@ -67,4 +158,4 @@
             "git_config": "git config --list"
         }
     }
-} 
+}
