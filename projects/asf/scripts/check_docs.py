@@ -160,12 +160,7 @@ class DocumentationChecker:
                 guidance.append(f"### 📄 File to Create: `{file_path}`")
                 
                 guidance.append("\n**Content Specification:**")
-                guidance.append("- No specific content details were found in `SPECIFICATIONS.md`. Please create a standard placeholder file.")
-                
-                guidance.append("\n**Required Content:**")
-                guidance.append("- Copyright header (if it's a code file, not for .md files).")
-                guidance.append("- A brief introduction explaining the file's purpose.")
-                guidance.append("- Content that directly addresses each point in the specification.")
+                guidance.append("- Follow instructions from `SPECIFICATIONS.md` and linked files.")
                 guidance.append("\n---\n")
 
         if self.unnecessary_files:

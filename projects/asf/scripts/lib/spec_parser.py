@@ -39,6 +39,7 @@ DIRECTORY_MAPPING = {
     "Framework Documentation": "framework", 
     "Development Guides": "development",
     "User Preferences": "user",
+    "Documentation Overview": ".",  # Maps to docs/ root
 }
 
 # --- Main Parser Class ---
@@ -167,7 +168,7 @@ class SpecParser:
 
             indent = len(line) - len(line.lstrip())
             level = indent // 2
-            content_str = line.strip().lstrip('- ').lstrip('123456789. ')
+            content_str = line.strip().lstrip('- ').lstrip('0123456789. ')
 
             if content_str.startswith('*'):
                 continue

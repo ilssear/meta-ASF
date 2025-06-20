@@ -3,7 +3,7 @@
 # Agile SpecFirst Methodology
 
 ## Overview
-Agile SpecFirst is a documentation-driven development methodology that combines the iterative nature of Agile with a specification-first approach. It emphasizes creating complete, clear specifications before implementation while maintaining the flexibility to adapt and evolve based on feedback.
+Agile SpecFirst is a documentation-driven development methodology that combines the iterative nature of Agile with a specification-first approach. It emphasizes creating complete, clear specifications before implementation while maintaining the flexibility to adapt and evolve based on feedback. The methodology integrates **Test-Driven Development (TDD)** as a quality assurance tool and follows **PERA cycles** (Plan-Execute-Report/Review-Adjust) for continuous improvement.
 
 ## Core Principles
 
@@ -49,6 +49,26 @@ LLM regenerability means that the specification is detailed and structured enoug
 - Validate security measures
 - Regular security reviews
 - Secure by default
+
+### 6. Test-Driven Development (TDD) as Quality Assurance
+While SpecFirst is specification-driven, **Test-Driven Development (TDD)** is used during the code generation and debugging phases:
+
+- **TDD for Code Generation**: When AI generates code from specifications, TDD ensures quality and correctness
+- **TDD for Debugging**: When issues arise in generated code, TDD helps identify and fix problems
+- **TDD for Refinement**: When specifications are refined, TDD validates that changes maintain functionality
+- **TDD for Validation**: Tests validate that generated code matches specification requirements
+
+TDD serves as a quality assurance tool within the SpecFirst methodology, not as the primary driver.
+
+### 7. PERA Methodology for Continuous Improvement
+The SpecFirst framework follows a continuous **PERA cycle** (Plan-Execute-Report/Review-Adjust) for continuous improvement:
+
+- **Plan**: Define specifications and requirements
+- **Execute**: Generate code and implement features
+- **Report/Review**: Validate with TDD and user feedback
+- **Adjust**: Refine specifications and implementation based on feedback
+
+This cycle ensures continuous improvement and adaptation throughout the development process.
 
 ## Example Specification
 For a practical example of a complete specification, see `EXAMPLE_SPECIFICATIONS.md` in the `/meta-SpecsFirst/methodology` directory. This example demonstrates how to structure a specification for a simple project, making it easy for users to copy and adapt for their own projects.
@@ -100,7 +120,7 @@ For a practical example of a complete specification, see `EXAMPLE_SPECIFICATIONS
    - Establish review process
    - Set acceptance criteria
 
-### Phase 3: Implementation
+### Phase 3: Implementation with TDD
 1. Core Infrastructure
    - Set up project structure
    - Configure development environment
@@ -110,7 +130,7 @@ For a practical example of a complete specification, see `EXAMPLE_SPECIFICATIONS
 
 2. Feature Implementation
    - Follow specification order
-   - Implement core features
+   - Implement core features using TDD
    - Add secondary features
    - Integrate components
    - Validate against specs
@@ -146,7 +166,7 @@ For a practical example of a complete specification, see `EXAMPLE_SPECIFICATIONS
    - Get formal approval
    - Begin implementation
 
-### Implementation Workflow
+### Implementation Workflow with TDD
 1. Preparation
    - Review `SPECIFICATIONS.md`
    - Set up environment
@@ -154,12 +174,13 @@ For a practical example of a complete specification, see `EXAMPLE_SPECIFICATIONS
    - Define milestones
    - Plan iterations
 
-2. Development
-   - Implement features
+2. Development with TDD
+   - Write failing tests first
+   - Implement features to pass tests
+   - Refactor code while maintaining test coverage
    - Update documentation
-   - Run tests
+   - Run tests continuously
    - Gather feedback
-   - Track progress
 
 3. Validation
    - Test against specs
@@ -167,6 +188,31 @@ For a practical example of a complete specification, see `EXAMPLE_SPECIFICATIONS
    - Check security
    - Review documentation
    - Get user feedback
+
+### PERA Cycle Workflow
+1. **Plan Phase**
+   - Review current specifications
+   - Identify improvement areas
+   - Define next iteration goals
+   - Document plan and success criteria
+
+2. **Execute Phase**
+   - Implement planned changes
+   - Use TDD for quality assurance
+   - Follow specification requirements
+   - Document implementation decisions
+
+3. **Report/Review Phase**
+   - Validate implementation against specifications
+   - Run comprehensive test suites
+   - Gather user feedback
+   - Document results and findings
+
+4. **Adjust Phase**
+   - Analyze feedback and results
+   - Refine specifications based on learnings
+   - Plan next iteration improvements
+   - Update documentation
 
 ## Success Metrics
 
@@ -191,6 +237,20 @@ For a practical example of a complete specification, see `EXAMPLE_SPECIFICATIONS
 - Issue resolution time
 - User feedback integration
 
+### TDD Effectiveness
+- Test coverage percentage
+- Bug detection rate
+- Code quality metrics
+- Refactoring confidence
+- Specification alignment
+
+### PERA Cycle Performance
+- Cycle completion time
+- Improvement rate
+- Feedback integration speed
+- Specification evolution quality
+- User satisfaction trends
+
 ## Best Practices
 
 ### Specification Development
@@ -207,12 +267,19 @@ For a practical example of a complete specification, see `EXAMPLE_SPECIFICATIONS
 - Version control documentation
 - Regular reviews
 
-### Implementation
-- Follow specifications
-- Document deviations
-- Regular validation
-- Security checks
-- User testing
+### Implementation with TDD
+- Write tests before implementation
+- Keep tests simple and focused
+- Refactor continuously
+- Maintain high test coverage
+- Use tests as documentation
+
+### PERA Cycle Management
+- Complete full cycles regularly
+- Document learnings from each phase
+- Use feedback to drive improvements
+- Maintain cycle consistency
+- Track cycle performance metrics
 
 ## Tools and Resources
 
@@ -236,6 +303,13 @@ For a practical example of a complete specification, see `EXAMPLE_SPECIFICATIONS
 - Communication tools
 - Review systems
 - Feedback collection
+
+### TDD Tools
+- Unit testing frameworks
+- Test runners
+- Coverage tools
+- Mock libraries
+- Test data generators
 
 ## Common Challenges and Solutions
 
@@ -262,7 +336,7 @@ For a practical example of a complete specification, see `EXAMPLE_SPECIFICATIONS
    - Solution: Stakeholder involvement
 
 2. Technical Issues
-   - Solution: Early testing
+   - Solution: Early testing with TDD
    - Solution: Regular reviews
    - Solution: Expert consultation
 
@@ -270,6 +344,38 @@ For a practical example of a complete specification, see `EXAMPLE_SPECIFICATIONS
    - Solution: Early user involvement
    - Solution: Regular feedback
    - Solution: Clear documentation
+
+### TDD Challenges
+1. Test Maintenance
+   - Solution: Keep tests simple
+   - Solution: Regular test refactoring
+   - Solution: Clear test documentation
+
+2. Test Coverage
+   - Solution: Set coverage targets
+   - Solution: Regular coverage reviews
+   - Solution: Focus on critical paths
+
+3. Test Performance
+   - Solution: Optimize test execution
+   - Solution: Use test parallelization
+   - Solution: Regular performance reviews
+
+### PERA Cycle Challenges
+1. Cycle Completion
+   - Solution: Set realistic timeframes
+   - Solution: Regular cycle reviews
+   - Solution: Clear phase definitions
+
+2. Feedback Integration
+   - Solution: Regular feedback collection
+   - Solution: Clear feedback processes
+   - Solution: Stakeholder involvement
+
+3. Continuous Improvement
+   - Solution: Regular methodology reviews
+   - Solution: Process optimization
+   - Solution: Tool enhancement
 
 ## Future Evolution
 
@@ -299,7 +405,9 @@ For a practical example of a complete specification, see `EXAMPLE_SPECIFICATIONS
 - Documentation-Driven Development
 - Specification-First Development
 - User-Centered Design
-- Security-First Development 
+- Security-First Development
+- Test-Driven Development
+- PERA Methodology
 
 ## Documentation Standards
 
@@ -395,7 +503,8 @@ Steps:
    - Document technical constraints
    - Update success criteria
 
-3. AI Assistant guides implementation
+3. AI Assistant guides implementation with TDD
+   - Generate tests first
    - Generate code from specs
    - Create tests
    - Update documentation
@@ -418,7 +527,8 @@ Steps:
    - Update test cases
    - Track changes
 
-3. AI Assistant guides fix implementation
+3. AI Assistant guides fix implementation with TDD
+   - Write failing test for bug
    - Generate fix code
    - Update tests
    - Validate against specs
@@ -472,7 +582,7 @@ Steps:
    - Fix issues
 ```
 
-### 6. Testing Workflow
+### 6. Testing Workflow with TDD
 ```markdown
 # Workflow: Test Implementation
 Trigger: New feature or bug fix
@@ -483,7 +593,8 @@ Steps:
    - Set success criteria
    - Document test plan
 
-2. AI Assistant generates tests
+2. AI Assistant generates tests using TDD
+   - Write failing test first
    - Create test cases
    - Set up test environment
    - Write test code
@@ -520,6 +631,36 @@ Steps:
    - Track issues
 ```
 
+### 8. PERA Cycle Workflow
+```markdown
+# Workflow: PERA Cycle Execution
+Trigger: Regular intervals or major changes
+Steps:
+1. Plan Phase
+   - Review current state
+   - Identify improvements
+   - Set goals and criteria
+   - Document plan
+
+2. Execute Phase
+   - Implement planned changes
+   - Use TDD for quality
+   - Follow specifications
+   - Document progress
+
+3. Report/Review Phase
+   - Validate results
+   - Run comprehensive tests
+   - Gather feedback
+   - Document findings
+
+4. Adjust Phase
+   - Analyze feedback
+   - Refine specifications
+   - Plan next iteration
+   - Update documentation
+```
+
 ## Workflow Integration
 
 ### Specification Files
@@ -533,6 +674,8 @@ Steps:
 - Ensures documentation completeness
 - Validates implementation against specs
 - Provides real-time feedback and suggestions
+- Supports TDD implementation
+- Facilitates PERA cycles
 
 ### Workflow Triggers
 - User actions (new project, feature request, bug report)
@@ -540,16 +683,12 @@ Steps:
 - Documentation updates
 - Security reviews
 - Regular maintenance tasks
+- PERA cycle intervals
 
 ### Success Criteria
 - Complete, clear specifications
 - Consistent documentation
 - Validated implementation
-- Comprehensive testing
-- Secure, maintainable code 
-
-## Test-Driven Development (TDD) and Feedback Loops
-
-- **TDD:** Always write a test before you write the code for a new feature or fix. This ensures your implementation matches the specification and helps prevent bugs.
-- **Feedback Loops:** Get feedback from users, testers, or stakeholders as early and as often as possible. Use this feedback to refine your specs and implementation.
-- **Iterate:** Repeat the cycle: refine spec → write test → implement → test → get feedback → refine. 
+- Comprehensive testing with TDD
+- Secure, maintainable code
+- Continuous improvement through PERA cycles 

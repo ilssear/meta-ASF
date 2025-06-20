@@ -1,7 +1,52 @@
 # Security Patterns
 
 ## Overview
-This document outlines security patterns and best practices for the SpecFirst framework.
+This document outlines security patterns and best practices for the SpecFirst framework. These patterns integrate **Test-Driven Development (TDD)** for security validation and follow **PERA cycles** (Plan-Execute-Report/Review-Adjust) for continuous security improvement.
+
+## TDD for Security Testing
+
+### Security-First TDD Pattern
+Security patterns are validated through TDD to ensure robust protection:
+
+```python
+# Example: Security TDD pattern
+def test_security_requirements_tdd():
+    """Example of TDD workflow for security features."""
+    # RED: Write failing security test first
+    def test_password_validation():
+        """Test password security requirements."""
+        # Should reject weak passwords
+        with pytest.raises(SecurityError):
+            create_user({"password": "123"})  # Too weak
+        
+        # Should accept strong passwords
+        user = create_user({"password": "SecurePass123!"})
+        assert user.password_hash is not None
+    
+    # GREEN: Implement security measures
+    def create_user(user_data):
+        if not is_strong_password(user_data["password"]):
+            raise SecurityError("Password too weak")
+        user = User(**user_data)
+        user.password_hash = hash_password(user_data["password"])
+        return user
+    
+    # REFACTOR: Enhance security while keeping tests green
+    def create_user(user_data):
+        validate_password_strength(user_data["password"])
+        user = User(**user_data)
+        user.password_hash = hash_password_with_salt(user_data["password"])
+        user.salt = generate_salt()
+        return user
+```
+
+### Security Testing with PERA Cycles
+Security patterns evolve through PERA cycles for continuous improvement:
+
+1. **Plan**: Define security requirements and threat models
+2. **Execute**: Implement security measures with TDD validation
+3. **Report/Review**: Assess security effectiveness and identify gaps
+4. **Adjust**: Enhance security patterns based on findings
 
 ## Core Security Principles
 
@@ -189,6 +234,64 @@ class SecurityLogger:
 - Incident response
 - Security metrics
 - Regular reviews
+
+## Continuous Security Improvement with PERA Cycles
+
+### Security Pattern Evolution
+Security patterns evolve through PERA cycles to address emerging threats:
+
+```python
+# Example: Security pattern evolution through PERA cycles
+class SecurityPatternEvolution:
+    """Example of how security patterns evolve through PERA cycles."""
+    
+    # Initial security pattern (Plan phase)
+    def test_basic_authentication(self):
+        """Basic authentication test."""
+        user = authenticate_user("user", "password")
+        assert user is not None
+    
+    # Enhanced security pattern (Execute phase with TDD)
+    def test_authentication_with_rate_limiting(self):
+        """Enhanced authentication with rate limiting."""
+        # RED: Test rate limiting requirements
+        for _ in range(5):
+            authenticate_user("user", "wrong_password")
+        
+        # Should be blocked after 5 attempts
+        with pytest.raises(RateLimitError):
+            authenticate_user("user", "wrong_password")
+    
+    # Comprehensive security pattern (Report/Review phase)
+    def test_authentication_with_multifactor(self):
+        """Comprehensive authentication with MFA."""
+        # Test MFA requirements
+        user = authenticate_user("user", "password")
+        assert user.requires_mfa
+        
+        # Test MFA validation
+        mfa_code = generate_mfa_code(user)
+        session = validate_mfa(user, mfa_code)
+        assert session.is_authenticated
+    
+    # Advanced security pattern (Adjust phase)
+    def test_authentication_with_adaptive_security(self):
+        """Advanced authentication with adaptive security."""
+        # Test adaptive security based on risk
+        low_risk_session = authenticate_user("user", "password", risk_level="low")
+        assert not low_risk_session.requires_mfa
+        
+        high_risk_session = authenticate_user("user", "password", risk_level="high")
+        assert high_risk_session.requires_mfa
+```
+
+### Security Quality Assurance Integration
+Security patterns integrate with the overall quality assurance process:
+
+1. **TDD for Security Validation**: Validate security measures with comprehensive tests
+2. **TDD for Threat Modeling**: Use tests to validate threat mitigation strategies
+3. **TDD for Compliance**: Ensure security patterns meet compliance requirements
+4. **PERA for Security Evolution**: Iteratively improve security patterns based on threats
 
 ## Related Documentation
 - See `docs/framework/best_practices/implementation_guide.md` for implementation details

@@ -28,6 +28,27 @@ This way, you:
 - Get a working project quickly
 - Learn as you go!
 
+## Understanding TDD and PERA Cycles 🔄
+
+### What is TDD? (Test-Driven Development)
+TDD is like having a safety net for your project:
+- **Write tests first** - Think of what should work before building
+- **Build to pass tests** - Make your code work as expected
+- **Improve safely** - Change things without breaking what works
+
+### What are PERA Cycles?
+PERA cycles help you improve your project step by step:
+1. **Plan** - Think about what you want to improve
+2. **Execute** - Make the changes with TDD
+3. **Report/Review** - Check if your changes work well
+4. **Adjust** - Plan what to improve next
+
+### How This Helps You
+- **Better Quality**: Your project works more reliably
+- **Faster Development**: Find and fix problems early
+- **Continuous Improvement**: Keep making your project better
+- **Confidence**: Know your changes won't break things
+
 ## Getting Started with Cursor IDE 🚀
 
 ### Step 1: Open Your Project
@@ -116,30 +137,42 @@ Just follow the prompts and answer the questions!
 
 ## The Iterative Process 🔄
 
-1. Plan
+### PERA Cycle with TDD
+1. **Plan** (PERA Cycle)
    - Write your idea
    - Break it down
    - Choose features
+   - Plan what to test
 
-2. Generate
+2. **Execute** (PERA Cycle with TDD)
    - Let Cursor set up
    - Use default options
    - Get a working version
+   - Write tests for new features
 
-3. Test
+3. **Report/Review** (PERA Cycle)
    - Run your project
    - Try the features
    - Note what works
+   - Check test results
 
-4. Improve
+4. **Adjust** (PERA Cycle)
    - Tell Cursor what to change
    - Generate new version
    - Test again
+   - Plan next improvements
 
-5. Repeat
+5. **Repeat** (Continuous PERA Cycles)
    - Keep improving
    - Add features
    - Make it better
+   - Follow TDD for quality
+
+### TDD in Your Workflow
+- **Before adding features**: Think about what should work
+- **While building**: Make sure tests pass
+- **After changes**: Run tests to check everything still works
+- **When improving**: Use tests to make changes safely
 
 ## Need Help? 🤝
 

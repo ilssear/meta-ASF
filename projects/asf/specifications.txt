@@ -75,6 +75,7 @@ With your specification as a guide, you'll:
 Every SpecFirst project has:
 - specifications.txt - Your project plan (in plain English or your native language)
 - SPECIFICATIONS.md - Your project plan but more formal after coaching and support from the AI
+- docs/README.md - Overview and navigation guide for the documentation structure
 
 ## Getting Started
 1. Write your specification

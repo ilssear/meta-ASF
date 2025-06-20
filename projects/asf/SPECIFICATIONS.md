@@ -91,9 +91,11 @@ The Agile SpecFirst methodology is a development approach that emphasizes:
 6. Beginner-friendly approach: Accessible to non-technical users while powerful for experts
 7. Practical focus: Emphasis on working, runnable projects
 8. Smart defaults: Intelligent handling of technical decisions
+9. **Test-Driven Development (TDD) as Quality Assurance**: TDD is used during code generation and debugging phases to ensure quality and correctness
+10. **PERA Methodology for Continuous Improvement**: Continuous PERA cycles (Plan-Execute-Report/Review-Adjust) for iterative improvement
 
 The methodology documentation and vibe-user guide are in:
-- methodology/AGILE_SPECFIRST.md - Core methodology documentation
+- methodology/AGILE_SPECFIRST.md - Core methodology documentation with TDD and PERA integration
 - methodology/VIBE_USER_GUIDE.md - Beginner-friendly guide
 - methodology/CURSOR_INTEGRATION.md - Cursor IDE integration details
 - methodology/SPECIFICATION_VALIDATION.md - Specification validation and QA/QC guide
@@ -242,6 +244,12 @@ The methodology documentation and vibe-user guide are in:
   - Use tests to validate that requirements are met and to prevent regressions.
   - Every feature or change should have a corresponding test case.
   - Automated tests are preferred for quick turnaround.
+- **PERA Methodology for Continuous Improvement:**
+  - Plan: Define specifications and requirements
+  - Execute: Generate code and implement features
+  - Report/Review: Validate with TDD and user feedback
+  - Adjust: Refine specifications and implementation based on feedback
+  - Continuous cycles for iterative improvement
 - **Rapid User Feedback:**
   - Seek feedback from users or stakeholders at every stage.
   - Use feedback to refine specifications and implementation.
@@ -338,6 +346,7 @@ The methodology documentation and vibe-user guide are in:
 
 project_root/  # Directory containing SPECIFICATIONS.md
 ├── docs/
+│   ├── README.md  # Overview and navigation guide for the documentation structure
 │   ├── framework/
 │   │   ├── methodology/
 │   │   ├── best_practices/
@@ -362,6 +371,7 @@ project_root/  # Directory containing SPECIFICATIONS.md
     └── <project_name>/  # Each project has its own SPECIFICATIONS.md as its root
 
 ### File Statuses
+- `docs/README.md` is **REQUIRED** as the overview and navigation guide for the documentation structure.
 - All methodology, best practices, and pattern docs in `framework/` are **REQUIRED**.
 - All workflow, testing, and setup docs in `development/` are **REQUIRED**.
 - Templates and user-specific files in `defaults/templates/copyright/` and `user/` are **OPTIONAL** or user-generated.
@@ -386,6 +396,13 @@ The framework includes essential scripts in the `scripts/` directory:
 
 ### Documentation Generation
 The framework must automatically generate all required documentation files from SPECIFICATIONS.md:
+
+0. Documentation Overview (/docs/)
+   - README.md (REQUIRED)
+     * Overview and navigation guide for the documentation structure
+     * Directory organization and purpose
+     * Quick reference for finding information
+     * Cross-references to key documentation
 
 1. Framework Documentation (/docs/framework/)
    - methodology/
@@ -546,6 +563,7 @@ The framework must automatically generate all required documentation files from 
 ### Documentation Requirements
 
 1. Required Files (Must Exist)
+   - docs/README.md (Documentation overview and navigation guide)
    - All methodology/*.md files
    - All README.md files in main directories
    - All template files in defaults/templates/copyright/
