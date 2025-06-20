@@ -1,56 +1,52 @@
-# Copyright (c) 2025 Jaime Moraga (jmoraga@mines.edu)
-# All rights reserved.
-#
-# This file is part of Agile SpecFirst for Cursor.
-# Version: 1.0.0
-#
+<!--
+Copyright (c) 2025, Jim Moran
+All rights reserved.
+
+This source code is licensed under the MIT-style license found in the
+LICENSE file in the root directory of this source tree. 
+-->
 # Implementation Guide Template
 
-# Implementation Guide
+This document provides a template for guiding the implementation phase of a project within the SpecFirst framework.
 
-## Overview
-This guide provides detailed instructions for implementing features using the SpecFirst framework.
+## 1. Guiding Principles
 
-## Implementation Process
-1. Specification Review
-   - Requirements analysis
-   - Documentation review
-   - Architecture design
-   - Technology selection
+- **Specification is King**: The `SPECIFICATIONS.md` file is the single source of truth for all implementation work. No feature should be built that is not described in the specifications.
+- **Incremental Value**: Implement features in small, testable increments that deliver value.
+- **Clarity and Simplicity**: Write clear, simple, and maintainable code. Avoid over-engineering.
+- **Test Everything**: All new code must be accompanied by corresponding unit and integration tests.
 
-2. Development Setup
-   - Environment configuration
-   - Dependencies installation
-   - Tool setup
-   - Version control
+## 2. Pre-Implementation Checklist
 
-3. Implementation
-   - Code structure
-   - Testing strategy
-   - Documentation
-   - Security measures
+- [ ] The `SPECIFICATIONS.md` file is complete and has been approved.
+- [ ] The development environment is set up according to `docs/development/setup/environment_setup.md`.
+- [ ] All required tools and dependencies are installed.
+- [ ] The project structure has been created.
 
-4. Quality Assurance
-   - Code review
-   - Testing
-   - Documentation review
-   - Security audit
+## 3. Implementation Workflow
 
-## Best Practices
-1. Follow specifications
-2. Write clean code
-3. Document thoroughly
-4. Test extensively
-5. Review regularly
+1.  **Select a Feature**: Choose a feature from `SPECIFICATIONS.md` to implement.
+2.  **Create a Feature Branch**: Create a new git branch for the feature (e.g., `feature/user-authentication`).
+3.  **Develop the Code**:
+    -   Write the application code, following the style guides in `docs/framework/style`.
+    -   Adhere to the architectural patterns defined in `docs/framework/patterns`.
+4.  **Write Tests**:
+    -   Write unit tests that cover the new code.
+    -   Write integration tests to ensure the new feature works with the existing system.
+5.  **Update Documentation**:
+    -   Update the `README.md` if necessary.
+    -   Add or update API documentation.
+    -   Ensure all changes are reflected in the project's documentation.
+6.  **Submit a Pull Request**:
+    -   Push the feature branch to the remote repository.
+    -   Create a pull request and link it to the relevant section of `SPECIFICATIONS.md`.
+    -   Ensure all automated checks and tests pass.
+7.  **Code Review**:
+    -   The code is reviewed for correctness, style, and adherence to specifications.
+8.  **Merge**:
+    -   Once approved, the feature branch is merged into the main development branch.
 
-## Common Pitfalls
-1. Skipping specifications
-2. Poor documentation
-3. Inadequate testing
-4. Security oversights
-5. Performance issues
+## 4. Post-Implementation
 
-## References
-- See docs/framework/methodology/AGILE_SPECFIRST.md
-- See docs/framework/best_practices/implementation_guide.md
-- See docs/development/workflow/development_workflow.md 
+- Verify that the feature is working as expected in the integrated environment.
+- Close the corresponding task or user story. 

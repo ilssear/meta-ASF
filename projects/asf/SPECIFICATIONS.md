@@ -2,6 +2,13 @@
 
 # SpecFirst Development Framework
 
+# Version Information
+This section defines the canonical version and update timestamp for the project. These values serve as the source of truth for all versioning across the framework's documentation and generated artifacts. When this section is updated, the changes should be propagated to all relevant files, particularly the header of the `.cursorrules` implementation guide.
+
+- **Version**: `1.0.1`
+- **Last Updated**: `2025-06-20`
+- **Status**: Active
+
 ## Project Overview
 Create a framework for implementing the Agile SpecFirst methodology within the Cursor IDE environment, focusing on practical, runnable proof-of-concept projects. The framework will guide users through an iterative process of creating, refining, and implementing software specifications, with smart defaults and clear guidance to handle unknowns. The goal is to get users from idea to running project as quickly and smoothly as possible.
 
@@ -230,6 +237,16 @@ The methodology documentation and vibe-user guide are in:
   - Version tracking
   - Default iterations
   - Progress tracking
+- **Test-Driven Development (TDD):**
+  - Write tests before or alongside implementation.
+  - Use tests to validate that requirements are met and to prevent regressions.
+  - Every feature or change should have a corresponding test case.
+  - Automated tests are preferred for quick turnaround.
+- **Rapid User Feedback:**
+  - Seek feedback from users or stakeholders at every stage.
+  - Use feedback to refine specifications and implementation.
+  - Incorporate feedback before closing a specification or feature.
+  - Shorten feedback loops to catch issues early and improve user satisfaction.
 
 ### 3. File Relationships
 
@@ -251,12 +268,15 @@ The methodology documentation and vibe-user guide are in:
 
 3. **Implementation Guide**
    - .cursorrules (Final generated file, contains all implementation details)
+     - Generated from `docs/framework/methodology/CURSOR_RULES.md`, which defines the required structure and content.
+     - Serves as the master set of rules for the AI assistant.
      - Generated after all other documentation is in place
      - References all documentation files
      - Contains environment setup
      - Contains package management
      - Contains process workflows
      - Contains templates and defaults
+     - Must be generated last, as it consolidates all project rules and preferences.
 
 #### Documentation Synchronization Paths
 1. **Methodology Files**
@@ -279,6 +299,9 @@ The methodology documentation and vibe-user guide are in:
    - SPECIFICATIONS.md → docs/user/PREFERENCES.md
    - SPECIFICATIONS.md → docs/user/STYLE_GUIDE.md
    - SPECIFICATIONS.md → docs/user/WORKFLOW_GUIDE.md
+
+5. **Implementation Guide**
+   - docs/framework/methodology/CURSOR_RULES.md → .cursorrules
 
 #### Generation Order
 1. SPECIFICATIONS.md (Source of Truth)
@@ -396,6 +419,17 @@ The framework must automatically generate all required documentation files from 
        * Best practices
        * Common patterns
        * Implementation examples
+     - SPECIFICATION_VALIDATION.md (REQUIRED)
+       * Specification validation and QA/QC guide
+       * Checklist for spec reviews
+       * Automated validation rules
+     - CURSOR_RULES.md (REQUIRED)
+       * Definitive guide for structuring a `.cursorrules` file
+       * Details all required sections, content, and formatting
+       * Serves as the source of truth for `.cursorrules` generation
+     - SCRIPTS_SPECS.md (REQUIRED)
+       * Defines the functional requirements for all validation scripts
+       * Ensures scripts can be regenerated from a clear specification
    - best_practices/
      - README.md (REQUIRED)
        * Overview of best practices
@@ -816,15 +850,17 @@ The framework must automatically generate all required documentation files from 
 - VIBE_USER_GUIDE.md - Beginner-friendly guide
 - CURSOR_INTEGRATION.md - Cursor IDE integration details
 - EXAMPLE_SPECIFICATIONS.md - Example project specification
+- CURSOR_RULES.md - Guide for `.cursorrules` file structure
+- SCRIPTS_SPECS.md - Specifications for framework validation scripts
 
 ## Continuous Improvement and Integration
 
 ### Continuous Integration (CI)
-- The CI pipeline MUST run the documentation checker script (`scripts/check_docs.py`) on every commit and before each release.
-- This script parses `SPECIFICATIONS.md` to extract all required documentation file paths and checks for their existence in the repository.
-- The build MUST fail if any required documentation file is missing.
-- This ensures that the documentation structure always matches the specification and prevents incomplete releases.
-- Developers MUST update documentation and rerun the script after any change to `SPECIFICATIONS.md` or the documentation structure.
+- The CI pipeline MUST use the project validation script (`scripts/validate_project.py`) as its primary quality gate. This script determines the overall project stage and provides a clear status.
+- For projects identified as "In Progress / Generating Required Docs", the pipeline should then run the documentation checker (`scripts/check_docs.py`) to get a detailed list of missing content.
+- The build MUST fail if `validate_project.py` indicates that required files or documentation are missing.
+- This two-step process ensures that the project structure is sound and that the documentation content always matches the specification, preventing incomplete releases.
+- Developers MUST update documentation and rerun the validation scripts after any change to `SPECIFICATIONS.md` or the documentation structure.
 
 ### Continuous Improvement
 - Continuous Improvement is an ongoing process of making incremental enhancements to the project, including code quality, documentation, user experience, and team workflows.
@@ -835,10 +871,6 @@ The framework must automatically generate all required documentation files from 
 - **docs/user/communication/** and **docs/user/preferences/** contain valid, pre-populated documents that guide communication and user preferences.
 - **docs/user/config/** and **docs/user/custom/** are intentionally left empty to allow users and teams to create their own rules and configurations.
 
-# Version Information
-- Version: 1.0.0
-- Last Updated: 2024-03-19
-- Status: Draft 
 
 ## Validation Checklist
 - [ ] All required sections present
@@ -851,6 +883,8 @@ The framework must automatically generate all required documentation files from 
 - [AGILE_SPECFIRST.md](methodology/AGILE_SPECFIRST.md)
 - [VIBE_USER_GUIDE.md](methodology/VIBE_USER_GUIDE.md)
 - [CURSOR_INTEGRATION.md](methodology/CURSOR_INTEGRATION.md) 
+- [CURSOR_RULES.md](methodology/CURSOR_RULES.md)
+- [SCRIPTS_SPECS.md](methodology/SCRIPTS_SPECS.md)
 
 ### Documentation Best Practices
 - Documentation Standards
@@ -917,3 +951,7 @@ For detailed workflow steps, triggers, and examples, refer to:
 - Validated implementation
 - Comprehensive testing
 - Secure, maintainable code 
+
+- After each specification refinement, write or update tests to match the new requirements.
+- After each implementation phase, run tests and seek user feedback before moving to the next stage.
+- Use test results and feedback to update specifications and improve the project iteratively. 

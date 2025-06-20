@@ -1,86 +1,30 @@
-# Copyright (c) 2025 Jaime Moraga (jmoraga@mines.edu)
-# All rights reserved.
-#
-# This file is part of Agile SpecFirst for Cursor.
-# Version: 1.0.0
-#
-# Value Proposition Template
+<!--
+Copyright (c) 2025, Jim Moran
+All rights reserved.
 
-# Value Proposition Guide
+This source code is licensed under the MIT-style license found in the
+LICENSE file in the root directory of this source tree. 
+-->
+# Value Proposition of the SpecFirst Framework
 
-## Overview
-This guide outlines the value proposition of the SpecFirst framework and its benefits for development teams.
+This document outlines the key benefits and value proposition of adopting the SpecFirst Development Framework.
 
-## Core Benefits
-1. Development Efficiency
-   - Clear specifications
-   - Reduced rework
-   - Faster delivery
-   - Better quality
+## For Developers
 
-2. Documentation Quality
-   - Complete documentation
-   - Up-to-date specs
-   - Clear requirements
-   - Better maintenance
+- **Clarity and Focus**: By starting with a complete specification, developers have a clear understanding of what needs to be built, reducing ambiguity and rework.
+- **Improved Efficiency**: The AI assistant acts as a partner, automating tedious tasks like boilerplate code generation, documentation updates, and adherence to style guides, allowing developers to focus on complex problem-solving.
+- **Consistency and Quality**: The framework enforces consistent standards for code, documentation, and security, leading to higher-quality, more maintainable projects.
+- **Reduced Cognitive Load**: With a single source of truth (`SPECIFICATIONS.md`) and a structured workflow, developers can spend less time trying to understand requirements and more time building great software.
 
-3. Team Collaboration
-   - Clear communication
-   - Shared understanding
-   - Better coordination
-   - Reduced conflicts
+## For Project Managers
 
-4. Project Success
-   - Higher quality
-   - Faster delivery
-   - Better maintenance
-   - User satisfaction
+- **Predictable Outcomes**: Detailed specifications provide a clear basis for estimating effort and tracking progress, leading to more predictable project timelines and outcomes.
+- **Enhanced Visibility**: The `SPECIFICATIONS.md` file serves as a living document that provides a real-time view of the project's scope and status.
+- **Better Alignment**: The framework ensures that the development team, stakeholders, and management are all aligned on the project's goals and requirements.
+- **Simplified Onboarding**: New team members can quickly get up to speed by reviewing the comprehensive specifications and documentation.
 
-## Key Features
-1. Specification Management
-   - Clear structure
-   - Version control
-   - Change tracking
-   - Documentation
+## For Stakeholders
 
-2. Development Tools
-   - Code generation
-   - Testing automation
-   - Documentation tools
-   - Quality checks
-
-3. Integration Capabilities
-   - Version control
-   - CI/CD
-   - Testing frameworks
-   - Documentation systems
-
-4. Quality Assurance
-   - Automated testing
-   - Code review
-   - Documentation review
-   - Security checks
-
-## Success Metrics
-1. Development
-   - Code quality
-   - Test coverage
-   - Documentation
-   - Delivery time
-
-2. Team
-   - Collaboration
-   - Communication
-   - Productivity
-   - Satisfaction
-
-3. Project
-   - Quality
-   - Delivery
-   - Maintenance
-   - User feedback
-
-## References
-- See docs/framework/methodology/AGILE_SPECFIRST.md
-- See docs/framework/best_practices/implementation_guide.md
-- See docs/development/workflow/development_workflow.md 
+- **Clear Communication**: The specification provides a clear, non-technical description of what the final product will do, facilitating better communication and feedback.
+- **Confidence in Delivery**: The rigorous, documentation-driven approach provides confidence that the final product will meet the agreed-upon requirements.
+- **Transparency**: The entire development process is transparent and traceable, from initial idea to final implementation. 

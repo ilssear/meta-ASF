@@ -1,248 +1,175 @@
-# Copyright (c) 2025 Jaime Moraga (jmoraga@mines.edu)
-# All rights reserved.
-#
-# This file is part of Agile SpecFirst for Cursor.
-# Version: 1.0.0
-#
-# Style Guide
+# Copyright (c) 2025, Jaime Moraga (jmoraga@mines.edu)
+
+# Framework Style Guide
 
 ## Overview
-This guide provides comprehensive style guidelines and best practices for projects following the SpecFirst framework methodology.
+This document provides an overview of style guidelines and coding standards for the SpecFirst Development Framework. Consistent style ensures readability, maintainability, and collaboration across all projects.
 
-## Code Style
+## Style Categories
 
-### 1. Python Style
-- Follow PEP 8
-- Use type hints
-- Write docstrings
-- Handle errors
-- Use consistent naming
+### 1. Documentation Style
+Guidelines for writing clear, consistent documentation that serves as the source of truth for all projects.
 
-### 2. Documentation Style
-- Use Markdown
-- Follow templates
-- Include examples
-- Add diagrams
-- Cross-reference
+### 2. Code Style
+Standards for writing clean, readable, and maintainable code across different programming languages.
 
-### 3. Configuration Style
-- Use YAML/JSON
-- Follow templates
-- Document options
-- Validate configs
-- Version control
+### 3. Specification Style
+Guidelines for creating comprehensive, LLM-regenerable specifications that drive implementation.
 
-### 4. Testing Style
-- Follow patterns
-- Write clear tests
-- Document cases
-- Handle errors
-- Use fixtures
+### 4. Template Style
+Standards for creating consistent templates and default configurations.
 
-## Documentation Standards
+## Documentation Style Guidelines
 
-### 1. Markdown Format
-- Use headers
-- Add lists
-- Include code
-- Add links
-- Use tables
+### General Principles
+- **Clarity**: Use clear, concise language
+- **Consistency**: Follow established patterns
+- **Completeness**: Include all necessary information
+- **Accessibility**: Make content easy to understand
+- **Maintainability**: Structure for easy updates
 
-### 2. Code Documentation
-- Write docstrings
-- Add comments
-- Document types
-- Explain logic
-- Include examples
+### Document Structure
+- **Header**: Copyright and version information
+- **Overview**: Clear purpose and scope
+- **Content**: Organized sections with clear headings
+- **References**: Cross-references to related documents
+- **Version**: Update tracking and status
 
-### 3. API Documentation
-- Document endpoints
-- Add examples
-- Include errors
-- Show responses
-- Add diagrams
+### Writing Guidelines
+- Use active voice
+- Write for the target audience
+- Include practical examples
+- Maintain consistent terminology
+- Provide clear instructions
 
-### 4. User Documentation
-- Write clearly
-- Add examples
-- Include screenshots
-- Add tutorials
-- Provide troubleshooting
+### Formatting Standards
+- Use Markdown syntax consistently
+- Follow heading hierarchy
+- Use lists for clarity
+- Include code blocks with language specification
+- Maintain consistent spacing
 
-## Naming Conventions
+## Code Style Guidelines
 
-### 1. Variables
-- Use snake_case
-- Be descriptive
-- Avoid abbreviations
-- Use consistent terms
-- Follow patterns
+### General Principles
+- **Readability**: Code should be self-documenting
+- **Consistency**: Follow established conventions
+- **Simplicity**: Prefer simple, clear solutions
+- **Maintainability**: Structure for long-term maintenance
+- **Performance**: Consider efficiency without sacrificing clarity
 
-### 2. Functions
-- Use snake_case
-- Be descriptive
-- Use verbs
-- Follow patterns
-- Document parameters
+### Language-Specific Guidelines
+- **Python**: Follow PEP 8 standards
+- **JavaScript**: Use consistent naming conventions
+- **HTML**: Semantic markup and accessibility
+- **CSS**: Organized and maintainable styles
 
-### 3. Classes
-- Use PascalCase
-- Be descriptive
-- Use nouns
-- Follow patterns
-- Document methods
+### Code Organization
+- **Structure**: Logical file and directory organization
+- **Naming**: Clear, descriptive names
+- **Comments**: Explain why, not what
+- **Documentation**: Comprehensive docstrings
+- **Imports**: Organized and minimal
 
-### 4. Files
-- Use snake_case
-- Be descriptive
-- Use extensions
-- Follow patterns
-- Group related files
+### Quality Standards
+- **Type Hints**: Use where appropriate
+- **Error Handling**: Comprehensive and graceful
+- **Testing**: Comprehensive test coverage
+- **Security**: Follow security best practices
+- **Performance**: Optimize for user experience
 
-## Code Organization
+## Specification Style Guidelines
 
-### 1. File Structure
-- Follow layout
-- Group related code
-- Use clear names
-- Follow patterns
-- Document structure
+### Structure Requirements
+- **Project Overview**: Clear purpose and scope
+- **Functional Requirements**: Detailed feature descriptions
+- **Behavioral Requirements**: User workflows and interactions
+- **Visual Requirements**: UI/UX specifications
+- **Performance Requirements**: Performance expectations
+- **Security Requirements**: Security considerations
 
-### 2. Module Organization
-- Group by feature
-- Use clear names
-- Follow patterns
-- Document modules
-- Include tests
+### Content Guidelines
+- **Clarity**: Unambiguous descriptions
+- **Completeness**: All requirements covered
+- **Consistency**: Uniform terminology
+- **Testability**: Measurable success criteria
+- **LLM-Regenerability**: AI-friendly format
 
-### 3. Class Organization
-- Single responsibility
-- Clear interfaces
-- Document methods
-- Follow patterns
-- Include tests
+### Language Standards
+- **Plain Language**: Avoid unnecessary jargon
+- **Active Voice**: Clear, direct statements
+- **Specificity**: Detailed, precise descriptions
+- **User Focus**: Emphasize user needs
+- **Technical Accuracy**: Correct technical details
 
-### 4. Function Organization
-- Single purpose
-- Clear parameters
-- Document behavior
-- Follow patterns
-- Include tests
+## Template Style Guidelines
 
-## Best Practices
+### Template Structure
+- **Header**: Copyright and version information
+- **Purpose**: Clear description of template use
+- **Structure**: Organized sections
+- **Examples**: Practical usage examples
+- **Customization**: Adaptation guidelines
 
-### 1. Code Quality
-- Write clean code
-- Follow standards
-- Document code
-- Handle errors
-- Write tests
+### Content Standards
+- **Reusability**: Generic but specific enough
+- **Clarity**: Clear instructions and examples
+- **Completeness**: Include all necessary elements
+- **Consistency**: Follow established patterns
+- **Maintainability**: Easy to update and extend
 
-### 2. Documentation
-- Keep updated
-- Use templates
-- Add examples
-- Include diagrams
-- Cross-reference
+### Customization Guidelines
+- **Adaptation**: How to modify for specific needs
+- **Extension**: How to add new features
+- **Validation**: How to ensure quality
+- **Documentation**: How to maintain consistency
+- **Versioning**: How to track changes
 
-### 3. Testing
-- Write tests
-- Document cases
-- Handle errors
-- Use fixtures
-- Follow patterns
+## Style Enforcement
 
-### 4. Configuration
-- Use templates
-- Document options
-- Validate configs
-- Version control
-- Follow patterns
+### Automated Tools
+- **Linters**: Code quality checks
+- **Formatters**: Consistent formatting
+- **Validators**: Documentation validation
+- **Checkers**: Style compliance verification
+- **Generators**: Automated style application
 
-## Style Examples
+### Manual Review
+- **Peer Review**: Team member validation
+- **Expert Review**: Specialist validation
+- **User Review**: End-user feedback
+- **Stakeholder Review**: Business validation
+- **Quality Review**: Comprehensive assessment
 
-### 1. Good Style
-```python
-# Clear, well-documented function
-def process_user_data(user_data: Dict[str, Any]) -> Result:
-    """
-    Process user data according to specifications.
-    
-    Args:
-        user_data: Dictionary containing user data
-        
-    Returns:
-        Result object containing processed data
-        
-    Raises:
-        ValidationError: If user data is invalid
-        ProcessingError: If processing fails
-    """
-    try:
-        # Validate input
-        validate_user_data(user_data)
-        
-        # Process data
-        result = process_data(user_data)
-        
-        # Log success
-        logger.info("Successfully processed user data")
-        
-        return result
-        
-    except ValidationError as e:
-        logger.error(f"Validation error: {e}")
-        raise
-        
-    except Exception as e:
-        logger.error(f"Processing error: {e}")
-        raise ProcessingError(f"Failed to process user data: {e}")
-```
+### Continuous Improvement
+- **Feedback Collection**: Gather improvement suggestions
+- **Pattern Analysis**: Identify common issues
+- **Guideline Updates**: Regular style guide updates
+- **Tool Enhancement**: Improve automation
+- **Training**: Team education and awareness
 
-### 2. Poor Style
-```python
-# Unclear, poorly documented function
-def process(data):
-    # Do stuff
-    x = data.get('stuff')
-    if x:
-        return x
-    return None
-```
+## Style Guide Maintenance
 
-## Common Pitfalls
+### Update Process
+- **Review Schedule**: Regular style guide reviews
+- **Change Management**: Controlled updates
+- **Version Control**: Track all changes
+- **Communication**: Team notification
+- **Training**: Update team knowledge
 
-### 1. Code Style
-- Inconsistent style
-- Poor documentation
-- Unclear names
-- Missing types
-- Poor organization
-
-### 2. Documentation
-- Outdated docs
-- Missing examples
-- Poor organization
-- Inconsistent style
-- Missing references
-
-### 3. Testing
-- Missing tests
-- Poor documentation
-- Unclear cases
-- Missing fixtures
-- Poor organization
-
-### 4. Configuration
-- Missing docs
-- Poor validation
-- Inconsistent style
-- Missing versioning
-- Poor organization
+### Quality Assurance
+- **Consistency Checks**: Regular compliance verification
+- **Effectiveness Review**: Style guide impact assessment
+- **User Feedback**: Gather user experience data
+- **Tool Validation**: Ensure tool effectiveness
+- **Documentation**: Keep guides current
 
 ## References
-- [Specification Guide](../best_practices/specification_guide.md)
-- [Implementation Guide](../best_practices/implementation_guide.md)
-- [Deployment Guide](../best_practices/deployment_guide.md)
-- [Security Guide](../security/README.md)
-- [Agile SpecFirst Methodology](../methodology/AGILE_SPECFIRST.md) 
+- [AGILE_SPECFIRST.md](../methodology/AGILE_SPECFIRST.md) - Core methodology
+- [VIBE_USER_GUIDE.md](../methodology/VIBE_USER_GUIDE.md) - User guidance
+- [CURSOR_INTEGRATION.md](../methodology/CURSOR_INTEGRATION.md) - IDE integration
+
+## Version Information
+- Version: 1.0.0
+- Last Updated: 2024-03-19
+- Status: Active 

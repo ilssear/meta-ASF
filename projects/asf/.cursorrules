@@ -3,8 +3,8 @@
 <!--
 This file defines the behavior and rules for AI-assisted development in Cursor IDE.
 It is a framework-level configuration that guides AI behavior across all projects using the SpecFirst methodology.
-Last updated: 2025-06-14
-Version: 1.0.0
+Last updated: 2025-06-20
+Version: 1.0.1
 -->
 
 ## Overview
@@ -383,7 +383,7 @@ References:
 - See docs/development/testing/integration_testing.md
 ```
 
-### 21. Documentation Structure
+### 21. Documentation Hierarchy
 
 ```markdown
 # Rule: Documentation Hierarchy
@@ -491,54 +491,21 @@ References:
 - See docs/user/preferences/README.md
 ```
 
-### 27. Specification Validation
+### Generation-Specific Rules
 
 ```markdown
-# Rule: Specification Quality Assurance
-Description: Validate specifications and generate QA/QC reports
-Priority: Critical
-Triggers: 
-- New specification creation
-- Specification updates
-- Project review requests
-Actions:
-- Analyze SPECIFICATIONS.md structure
-- Validate required sections
-- Check formatting and consistency
-- Verify links and references
-- Generate QA/QC report
-Requirements:
-- Complete section validation
-- Format compliance check
-- Reference verification
-- Link validation
-- Consistency check
-- Quality metrics
-- Improvement suggestions
-Report Format:
-1. Overview
-   - Specification status
-   - Key metrics
-   - Critical issues
-2. Section Analysis
-   - Required sections present
-   - Section completeness
-   - Format compliance
-3. Reference Check
-   - Internal links valid
-   - External references
-   - Documentation links
-4. Quality Metrics
-   - Completeness score
-   - Clarity assessment
-   - Consistency rating
-5. Recommendations
-   - Critical improvements
-   - Optional enhancements
-   - Best practices
-References:
-- See docs/framework/best_practices/specification_guide.md
-- See docs/framework/methodology/AGILE_SPECFIRST.md
+# Rule: Confine to Specifications Directory
+Description: All file generation and modification operations MUST be confined to the project's specification directory. Do not read or write files outside of this directory.
+```
+
+```markdown
+# Rule: No Git History
+Description: The generation process MUST rely only on the current state of the file system. Do not query or depend on `git` history.
+```
+
+```markdown
+# Rule: No Script Modification Without Confirmation
+Description: Core validation and generation scripts MUST NOT be altered without explicit user confirmation.
 ```
 
 ## User Preferences

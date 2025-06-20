@@ -3,8 +3,8 @@
 <!--
 This file defines the behavior and rules for AI-assisted development in Cursor IDE.
 It is a framework-level configuration that guides AI behavior across all projects using the SpecFirst methodology.
-Last updated: 2025-06-14
-Version: 1.0.0
+Last updated: 2025-06-20
+Version: 1.0.1
 -->
 
 ## Overview
@@ -36,6 +36,12 @@ The .cursorrules file defines the behavior and rules for AI-assisted development
    - Provide real-time feedback
    - Implement graceful error handling
    - See docs/framework/methodology/VIBE_USER_GUIDE.md for user guidance
+
+5. **Incremental Development**
+   - After initial code generation, make small, focused changes (15 min - 2 hours)
+   - Update documentation at every cycle
+   - Get user feedback on each increment
+   - Validate each change before proceeding
 
 ## Development Rules
 
@@ -203,9 +209,12 @@ Description: Deliver value with each commit
 Priority: High
 Requirements:
 - Start simple and build incrementally
+- After initial generation, make small, focused changes (15 min - 2 hours)
 - Ensure working functionality
 - Prefer complete features
 - Test early and often
+- Update documentation at every cycle
+- Get user feedback on each increment
 References:
 - See docs/development/workflow/development_workflow.md
 - See docs/framework/methodology/AGILE_SPECFIRST.md
@@ -489,6 +498,117 @@ Requirements:
 References:
 - See docs/framework/methodology/AGILE_SPECFIRST.md
 - See docs/user/preferences/README.md
+```
+
+### 27. Test-Driven Development
+
+```markdown
+# Rule: Test-First Development
+Description: Write tests before implementation
+Priority: High
+Requirements:
+- Write failing test before new feature
+- Test both success and failure cases
+- Validate against specifications
+- Run tests after each change
+- Use tests to guide implementation
+- Follow Red-Green-Refactor cycle
+- Test edge cases and error conditions
+References:
+- See docs/development/testing/unit_testing.md
+- See docs/framework/methodology/AGILE_SPECFIRST.md
+```
+
+### 28. Incremental Changes
+
+```markdown
+# Rule: Small, Focused Changes
+Description: Make one small change at a time
+Priority: High
+Requirements:
+- Change one thing at a time
+- Test each change before proceeding
+- Validate against specifications
+- Get user feedback on each increment
+- Document what was changed and why
+- Break large changes into phases
+- Each phase must be testable independently
+References:
+- See docs/development/workflow/development_workflow.md
+- See docs/framework/methodology/AGILE_SPECFIRST.md
+```
+
+### 29. Change Validation
+
+```markdown
+# Rule: Validate Before Committing
+Description: Ensure changes meet specifications
+Priority: Critical
+Requirements:
+- Run validation scripts after changes
+- Test both positive and negative cases
+- Verify no regressions introduced
+- Check that changes align with methodology
+- Get explicit approval for major changes
+- Use validation checklist before committing
+- Document any exceptions or deviations
+References:
+- See scripts/validate_project.py
+- See scripts/check_docs.py
+- See docs/framework/best_practices/implementation_guide.md
+```
+
+### 30. User Feedback Integration
+
+```markdown
+# Rule: Rapid Feedback Loops
+Description: Get feedback early and often
+Priority: High
+Requirements:
+- Seek feedback at every stage
+- Use feedback to refine specifications
+- Incorporate feedback before closing features
+- Shorten feedback loops to catch issues early
+- Test with real users when possible
+- Document feedback and decisions
+References:
+- See docs/framework/methodology/AGILE_SPECFIRST.md
+- See docs/development/workflow/development_workflow.md
+```
+
+### 31. Specification Alignment
+
+```markdown
+# Rule: Implementation-Specification Sync
+Description: Keep implementation aligned with specifications
+Priority: Critical
+Requirements:
+- Validate implementation against SPECIFICATIONS.md
+- Update specifications when implementation deviates
+- Maintain traceability between specs and code
+- Document any deviations with rationale
+- Regular audits of specification compliance
+References:
+- See docs/framework/best_practices/implementation_guide.md
+- See docs/development/testing/integration_testing.md
+```
+
+### 32. Error Prevention
+
+```markdown
+# Rule: Prevent Common Mistakes
+Description: Avoid common development pitfalls
+Priority: High
+Requirements:
+- Don't make multiple changes at once
+- Don't skip testing phases
+- Don't ignore user feedback
+- Don't proceed without validation
+- Don't violate incremental development principles
+- Document lessons learned from mistakes
+References:
+- See docs/development/workflow/development_workflow.md
+- See docs/development/testing/unit_testing.md
 ```
 
 ## User Preferences

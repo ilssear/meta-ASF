@@ -1,178 +1,60 @@
-# Copyright (c) 2025 Jaime Moraga (jmoraga@mines.edu)
-# All rights reserved.
-#
-# This file is part of Agile SpecFirst for Cursor.
-# Version: 1.0.0
-#
-# Deployment workflow guide.
+<!--
+Copyright (c) 2025, Jim Moran
+All rights reserved.
 
+This source code is licensed under the MIT-style license found in the
+LICENSE file in the root directory of this source tree. 
+-->
 # Deployment Workflow Guide
 
-## Overview
-This guide provides comprehensive deployment workflow instructions and best practices.
+This document outlines the standard deployment workflow for projects developed using the SpecFirst framework.
 
-## Deployment Structure
+## 1. Objective
 
-### 1. Environment Setup
-- Development
-- Staging
-- Production
-- Testing
+The goal of the deployment workflow is to ensure that the application is deployed to its target environment in a reliable, repeatable, and automated manner.
 
-### 2. Build Process
-- Code compilation
-- Asset bundling
-- Dependency installation
-- Configuration
+## 2. Phases of Deployment
 
-### 3. Deployment Steps
-- Environment preparation
-- Application deployment
-- Database migration
-- Service configuration
+The deployment process is divided into several phases:
 
-### 4. Monitoring
-- Logging
-- Metrics
-- Alerts
-- Performance
+1.  **Preparation**: Getting the application ready for deployment.
+2.  **Staging Deployment**: Deploying to a staging environment for final testing.
+3.  **Production Deployment**: Deploying to the live production environment.
+4.  **Post-Deployment Verification**: Verifying that the production deployment was successful.
 
-## Deployment Implementation
+## 3. Deployment Workflow Steps
 
-### 1. Environment Design
-- Clear structure
-- Logical grouping
-- Easy maintenance
-- Good documentation
+### Step 1: Preparation
 
-### 2. Build Process
-- Clear steps
-- Proper setup
-- Good practices
-- Error handling
+-   [ ] Ensure all code has been merged into the main branch.
+-   [ ] Create a release branch from the main branch (e.g., `release/v1.2.0`).
+-   [ ] Update the version number in the project's configuration.
+-   [ ] Generate a changelog for the release.
+-   [ ] Run all automated tests (unit, integration, E2E) and ensure they pass.
 
-### 3. Deployment Process
-- Reliable deployment
-- Fast execution
-- Good coverage
-- Clear reporting
+### Step 2: Staging Deployment
 
-### 4. Monitoring Process
-- Regular updates
-- Version control
-- Documentation
-- Performance optimization
+-   [ ] Build the application for the staging environment.
+-   [ ] Deploy the build to the staging server, which should be a mirror of the production environment.
+-   [ ] Perform smoke testing on the staging environment to ensure core functionalities are working.
+-   [ ] Notify stakeholders for final review and approval.
 
-## Best Practices
+### Step 3: Production Deployment
 
-### 1. Environment Management
-- Clear structure
-- Logical grouping
-- Easy maintenance
-- Good documentation
+-   [ ] Schedule a maintenance window if downtime is expected.
+-   [ ] Back up the production database and application files.
+-   [ ] Deploy the new version to the production environment.
+-   [ ] Common deployment strategies include:
+    -   **Blue-Green Deployment**: Maintain two identical production environments. Deploy to the inactive one, test, then switch traffic.
+    -   **Canary Release**: Release the new version to a small subset of users first.
 
-### 2. Build Process
-- Clear steps
-- Proper setup
-- Good practices
-- Error handling
+### Step 4: Post-Deployment Verification
 
-### 3. Deployment Process
-- Reliable deployment
-- Fast execution
-- Good coverage
-- Clear reporting
+-   [ ] Monitor application logs and error rates for any anomalies.
+-   [ ] Perform a health check on the production system.
+-   [ ] Verify that the new features are working as expected.
+-   [ ] Once the release is stable, merge the release branch back into main and tag it.
 
-### 4. Monitoring Process
-- Regular updates
-- Version control
-- Documentation
-- Performance optimization
+## 4. Automation
 
-## Examples
-
-### 1. Good Deployment
-```yaml
-# Good deployment configuration
-version: '3.8'
-
-services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    environment:
-      - NODE_ENV=production
-      - DATABASE_URL=postgresql://user:pass@db:5432/app
-    depends_on:
-      - db
-    ports:
-      - "3000:3000"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-
-  db:
-    image: postgres:13
-    environment:
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=pass
-      - POSTGRES_DB=app
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U user -d app"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-volumes:
-  postgres_data:
-```
-
-### 2. Poor Deployment
-```yaml
-# Poor deployment configuration
-version: '3'
-services:
-  app:
-    build: .
-    ports:
-      - "3000:3000"
-  db:
-    image: postgres
-```
-
-## Common Pitfalls
-
-### 1. Environment Management
-- Missing structure
-- Poor grouping
-- Hard maintenance
-- Bad documentation
-
-### 2. Build Process
-- Unclear steps
-- Bad setup
-- Poor practices
-- No error handling
-
-### 3. Deployment Process
-- Unreliable deployment
-- Slow execution
-- Poor coverage
-- Unclear reporting
-
-### 4. Monitoring Process
-- No updates
-- No version control
-- No documentation
-- No optimization
-
-## References
-- [Docker Documentation](https://docs.docker.com/)
-- [Kubernetes Guide](https://kubernetes.io/docs/)
-- [CI/CD Best Practices](https://martinfowler.com/articles/continuousIntegration.html)
-- [Monitoring Best Practices](https://martinfowler.com/articles/monitoring.html) 
+Whenever possible, the deployment workflow should be automated using CI/CD pipelines. Tools like Jenkins, GitLab CI, or GitHub Actions can be used to automate the build, test, and deployment steps. 

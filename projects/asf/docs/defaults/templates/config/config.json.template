@@ -1,107 +1,203 @@
+# Copyright (c) 2025, Jaime Moraga (jmoraga@mines.edu)
+
 {
-    "version": "1.0.0",
-    "project": {
-        "name": "Agile SpecFirst for Cursor",
-        "description": "Project description",
-        "author": "Jaime Moraga (jmoraga@mines.edu)",
-        "year": "2025"
+  "version": "1.0.1",
+  "environment": {
+    "name": "development",
+    "debug": true,
+    "log_level": "DEBUG",
+    "node_env": "development"
+  },
+  "application": {
+    "name": "asf",
+    "description": "Agile SpecFirst Development Framework",
+    "version": "1.0.1",
+    "author": "Jaime Moraga (jmoraga@mines.edu)",
+    "license": "MIT",
+    "repository": "https://github.com/username/meta-ASF"
+  },
+  "server": {
+    "host": "localhost",
+    "port": 8000,
+    "timeout": 30,
+    "max_connections": 100,
+    "cors_origins": ["http://localhost:3000", "http://localhost:8080"]
+  },
+  "database": {
+    "type": "sqlite",
+    "path": "./data/asf.db",
+    "backup_path": "./backups/",
+    "max_connections": 10,
+    "timeout": 30,
+    "migrations": {
+      "auto_migrate": true,
+      "backup_before_migrate": true
+    }
+  },
+  "security": {
+    "secret_key": "your-secret-key-change-in-production",
+    "token_expiry": 3600,
+    "allowed_hosts": ["localhost", "127.0.0.1"],
+    "password_policy": {
+      "min_length": 8,
+      "require_uppercase": true,
+      "require_lowercase": true,
+      "require_numbers": true,
+      "require_special": true
     },
-    "environment": {
-        "development": {
-            "debug": true,
-            "log_level": "DEBUG",
-            "api_url": "http://localhost:8000",
-            "database": {
-                "host": "localhost",
-                "port": 5432,
-                "name": "dev_db",
-                "user": "dev_user",
-                "password": "dev_password"
-            }
-        },
-        "testing": {
-            "debug": true,
-            "log_level": "DEBUG",
-            "api_url": "http://localhost:8000",
-            "database": {
-                "host": "localhost",
-                "port": 5432,
-                "name": "test_db",
-                "user": "test_user",
-                "password": "test_password"
-            }
-        },
-        "production": {
-            "debug": false,
-            "log_level": "INFO",
-            "api_url": "https://api.example.com",
-            "database": {
-                "host": "db.example.com",
-                "port": 5432,
-                "name": "prod_db",
-                "user": "prod_user",
-                "password": "prod_password"
-            }
-        }
+    "session": {
+      "secure": false,
+      "http_only": true,
+      "same_site": "lax"
+    }
+  },
+  "logging": {
+    "level": "DEBUG",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "file": "logs/asf.log",
+    "max_size": 10485760,
+    "backup_count": 5,
+    "console_output": true
+  },
+  "monitoring": {
+    "enabled": true,
+    "metrics_port": 9090,
+    "health_check_interval": 30,
+    "performance_monitoring": true,
+    "error_tracking": true
+  },
+  "cache": {
+    "type": "memory",
+    "ttl": 3600,
+    "max_size": 1000,
+    "redis": {
+      "host": "localhost",
+      "port": 6379,
+      "db": 0,
+      "enabled": false
+    }
+  },
+  "email": {
+    "enabled": false,
+    "smtp_host": "smtp.gmail.com",
+    "smtp_port": 587,
+    "username": "your-email@gmail.com",
+    "password": "your-app-password",
+    "from_address": "your-email@gmail.com",
+    "use_tls": true
+  },
+  "storage": {
+    "type": "local",
+    "path": "./storage",
+    "max_file_size": 10485760,
+    "allowed_types": ["image/jpeg", "image/png", "application/pdf", "text/markdown"],
+    "backup_enabled": true,
+    "compression": true
+  },
+  "api": {
+    "version": "v1",
+    "prefix": "/api/v1",
+    "rate_limit": 100,
+    "timeout": 30,
+    "documentation": {
+      "enabled": true,
+      "path": "/docs",
+      "title": "ASF API Documentation",
+      "version": "1.0.1"
+    }
+  },
+  "testing": {
+    "test_database": "test_asf.db",
+    "coverage_threshold": 80,
+    "timeout": 30,
+    "parallel": true,
+    "reporting": {
+      "html": true,
+      "xml": true,
+      "coverage": true
+    }
+  },
+  "development": {
+    "auto_reload": true,
+    "debug_toolbar": true,
+    "profiling": false,
+    "hot_reload": true,
+    "linting": {
+      "enabled": true,
+      "tools": ["flake8", "black", "mypy"],
+      "auto_fix": true
+    }
+  },
+  "specifications": {
+    "auto_validate": true,
+    "validation_interval": 300,
+    "backup_specs": true,
+    "version_control": true,
+    "templates": {
+      "enabled": true,
+      "path": "./templates",
+      "auto_generate": true
+    }
+  },
+  "documentation": {
+    "auto_generate": true,
+    "format": "markdown",
+    "include_examples": true,
+    "include_diagrams": true,
+    "search_enabled": true,
+    "versioning": true
+  },
+  "workflow": {
+    "pera_cycles": {
+      "enabled": true,
+      "auto_tracking": true,
+      "feedback_integration": true
     },
-    "security": {
-        "jwt": {
-            "secret_key": "your-secret-key",
-            "algorithm": "HS256",
-            "access_token_expire_minutes": 30,
-            "refresh_token_expire_days": 7
-        },
-        "cors": {
-            "allowed_origins": ["http://localhost:3000"],
-            "allowed_methods": ["GET", "POST", "PUT", "DELETE"],
-            "allowed_headers": ["*"]
-        }
+    "incremental_development": {
+      "enabled": true,
+      "max_change_time": 7200,
+      "auto_validation": true
     },
-    "logging": {
-        "level": "INFO",
-        "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-        "handlers": {
-            "console": {
-                "enabled": true,
-                "level": "INFO"
-            },
-            "file": {
-                "enabled": true,
-                "level": "DEBUG",
-                "path": "logs/app.log",
-                "max_size": 10485760,
-                "backup_count": 5
-            }
-        }
+    "tdd": {
+      "enabled": true,
+      "coverage_required": true,
+      "auto_test_generation": false
+    }
+  },
+  "ai_integration": {
+    "enabled": true,
+    "provider": "openai",
+    "model": "gpt-4",
+    "temperature": 0.7,
+    "max_tokens": 2000,
+    "api_key": "your-openai-api-key",
+    "code_generation": {
+      "enabled": true,
+      "validation_required": true,
+      "auto_testing": true
     },
-    "api": {
-        "version": "v1",
-        "prefix": "/api",
-        "rate_limit": {
-            "enabled": true,
-            "requests_per_minute": 60
-        },
-        "swagger": {
-            "enabled": true,
-            "path": "/docs"
-        }
+    "specification_refinement": {
+      "enabled": true,
+      "auto_suggestions": true
+    }
+  },
+  "deployment": {
+    "environment": "development",
+    "docker": {
+      "enabled": false,
+      "image_name": "asf-framework",
+      "port": 8000
     },
-    "cache": {
-        "enabled": true,
-        "type": "redis",
-        "host": "localhost",
-        "port": 6379,
-        "ttl": 3600
+    "kubernetes": {
+      "enabled": false,
+      "namespace": "asf",
+      "replicas": 1
     },
     "monitoring": {
-        "enabled": true,
-        "metrics": {
-            "enabled": true,
-            "path": "/metrics"
-        },
-        "health": {
-            "enabled": true,
-            "path": "/health"
-        }
+      "enabled": true,
+      "metrics": true,
+      "logging": true,
+      "alerting": false
     }
+  }
 } 

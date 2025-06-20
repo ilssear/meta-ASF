@@ -1,162 +1,194 @@
-# Copyright (c) 2025 Jaime Moraga (jmoraga@mines.edu)
-# All rights reserved.
-#
-# This file is part of Agile SpecFirst for Cursor.
-# Version: 1.0.0
-#
-# Development Setup Guide
+# Copyright (c) 2025, Jaime Moraga (jmoraga@mines.edu)
 
 # Development Setup
 
 ## Overview
-This guide provides comprehensive setup instructions for development environments.
+This document provides an overview of development environment setup for the SpecFirst Development Framework. Proper setup ensures consistent, efficient development across all projects and team members.
+
+## Setup Categories
+
+### 1. Environment Setup
+Configuration of development environments, tools, and infrastructure.
+
+### 2. Project Setup
+Initialization and configuration of new projects using the framework.
+
+### 3. Tool Setup
+Installation and configuration of development tools and utilities.
+
+### 4. Team Setup
+Configuration for team collaboration and shared development practices.
+
+## Setup Principles
+
+### 1. Consistency
+- Standardized environment configurations
+- Consistent tool versions and settings
+- Uniform project structures
+- Shared development practices
+
+### 2. Automation
+- Automated environment setup
+- Scripted project initialization
+- Automated tool configuration
+- Streamlined onboarding process
+
+### 3. Documentation
+- Clear setup instructions
+- Troubleshooting guides
+- Configuration documentation
+- Best practice guidelines
+
+### 4. Flexibility
+- Adaptable to different project needs
+- Support for multiple platforms
+- Customizable configurations
+- Scalable setup processes
 
 ## Environment Setup
 
-### 1. System Requirements
-- Python 3.8+
-- Git
-- Docker (optional)
-- Node.js (optional)
-- PostgreSQL (optional)
+### Development Environment
+- **Operating System**: Cross-platform support
+- **IDE Configuration**: Cursor IDE setup
+- **Language Runtimes**: Python, Node.js, etc.
+- **Package Managers**: pip, npm, conda, etc.
+- **Version Control**: Git configuration
 
-### 2. Development Tools
-- VS Code
-- PyCharm
-- Git
-- Docker Desktop
-- Postman
+### Infrastructure Setup
+- **Local Development**: Local environment configuration
+- **Testing Environment**: Test infrastructure setup
+- **Staging Environment**: Pre-production setup
+- **Production Environment**: Production deployment setup
+- **Monitoring**: Logging and monitoring setup
 
-### 3. Python Environment
-```bash
-# Create virtual environment
-python -m venv venv
-
-# Activate virtual environment
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate     # Windows
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### 4. Database Setup
-```bash
-# Start PostgreSQL
-docker run -d \
-    --name postgres \
-    -e POSTGRES_PASSWORD=postgres \
-    -e POSTGRES_USER=postgres \
-    -e POSTGRES_DB=app \
-    -p 5432:5432 \
-    postgres:13
-```
+### Security Setup
+- **Authentication**: Development authentication
+- **Authorization**: Access control configuration
+- **Encryption**: Data encryption setup
+- **Audit Logging**: Security event logging
+- **Compliance**: Security compliance configuration
 
 ## Project Setup
 
-### 1. Clone Repository
-```bash
-git clone https://github.com/your-org/your-repo.git
-cd your-repo
-```
+### Project Initialization
+- **Project Structure**: Standard directory layout
+- **Configuration Files**: Project configuration setup
+- **Dependencies**: Package and dependency management
+- **Documentation**: Initial documentation setup
+- **Version Control**: Git repository initialization
 
-### 2. Install Dependencies
-```bash
-# Install Python dependencies
-pip install -r requirements.txt
+### Framework Integration
+- **SpecFirst Setup**: Framework integration
+- **Documentation Generation**: Automated doc generation
+- **Testing Framework**: Test infrastructure setup
+- **CI/CD Pipeline**: Continuous integration setup
+- **Quality Tools**: Code quality tool configuration
 
-# Install development dependencies
-pip install -r requirements-dev.txt
-```
+### Customization
+- **Project-Specific Config**: Custom project settings
+- **Team Preferences**: Team-specific configurations
+- **Domain Adaptation**: Business domain customization
+- **Technology Stack**: Technology-specific setup
+- **Integration Points**: External system integration
 
-### 3. Configuration
-```bash
-# Copy configuration template
-cp config.json.template config.json
+## Tool Setup
 
-# Edit configuration
-nano config.json
-```
+### Core Tools
+- **Version Control**: Git setup and configuration
+- **Package Management**: Language-specific package managers
+- **Build Tools**: Compilation and build tools
+- **Testing Tools**: Testing framework setup
+- **Documentation Tools**: Documentation generation tools
 
-### 4. Database Migration
-```bash
-# Run migrations
-python manage.py migrate
-```
+### Development Tools
+- **Code Editors**: IDE and editor configuration
+- **Debugging Tools**: Debugger setup and configuration
+- **Profiling Tools**: Performance analysis tools
+- **Code Quality**: Linting and formatting tools
+- **Security Tools**: Security scanning and validation
 
-## Development Tools
+### Collaboration Tools
+- **Communication**: Team communication tools
+- **Project Management**: Project tracking tools
+- **Code Review**: Review and approval tools
+- **Knowledge Sharing**: Documentation and wiki tools
+- **Issue Tracking**: Bug and feature tracking
 
-### 1. Code Quality
-- Black for formatting
-- Flake8 for linting
-- MyPy for type checking
-- Pytest for testing
+## Team Setup
 
-### 2. Git Hooks
-- pre-commit
-- pre-push
-- commit-msg
+### Team Configuration
+- **Access Control**: Team member permissions
+- **Role Definition**: Team role assignments
+- **Workflow Configuration**: Team workflow setup
+- **Communication Channels**: Team communication setup
+- **Knowledge Base**: Team knowledge sharing
 
-### 3. IDE Setup
-- VS Code extensions
-- PyCharm plugins
-- Editor config
+### Collaboration Setup
+- **Code Review Process**: Review workflow setup
+- **Documentation Standards**: Documentation guidelines
+- **Testing Practices**: Team testing procedures
+- **Deployment Process**: Team deployment workflow
+- **Quality Assurance**: Team quality processes
 
-### 4. Debugging Tools
-- Python debugger
-- Logging
-- Profiling
-- Testing
+### Training and Onboarding
+- **New Member Setup**: Onboarding process
+- **Training Materials**: Educational resources
+- **Best Practices**: Team best practice guides
+- **Troubleshooting**: Common issue resolution
+- **Support Resources**: Help and support channels
 
-## Best Practices
+## Setup Automation
 
-### 1. Environment Management
-- Use virtual environments
-- Pin dependencies
-- Document requirements
-- Version control
+### Automated Setup
+- **Environment Scripts**: Automated environment setup
+- **Project Templates**: Standardized project creation
+- **Configuration Management**: Automated configuration
+- **Dependency Installation**: Automated dependency setup
+- **Tool Configuration**: Automated tool setup
 
-### 2. Configuration
-- Use environment variables
-- Secure secrets
-- Version control
-- Documentation
+### Setup Validation
+- **Environment Verification**: Setup validation checks
+- **Configuration Testing**: Configuration validation
+- **Tool Testing**: Tool functionality verification
+- **Integration Testing**: Setup integration validation
+- **Performance Testing**: Setup performance validation
 
-### 3. Development Workflow
-- Git workflow
-- Code review
-- Testing
-- Documentation
+### Setup Maintenance
+- **Regular Updates**: Setup maintenance schedule
+- **Version Management**: Tool version management
+- **Configuration Updates**: Configuration maintenance
+- **Security Updates**: Security patch management
+- **Documentation Updates**: Setup documentation maintenance
 
-### 4. Security
-- Secure credentials
-- Access control
-- Data protection
-- Audit logging
+## Setup Documentation
 
-## Troubleshooting
+### Setup Guides
+- **Quick Start**: Fast setup instructions
+- **Detailed Setup**: Comprehensive setup guide
+- **Troubleshooting**: Common setup issues
+- **Best Practices**: Setup best practices
+- **Advanced Configuration**: Advanced setup options
 
-### 1. Common Issues
-- Environment setup
-- Dependencies
-- Configuration
-- Database
+### Configuration Reference
+- **Environment Variables**: Environment configuration
+- **Configuration Files**: File-based configuration
+- **Tool Settings**: Tool-specific settings
+- **Integration Config**: Integration configuration
+- **Security Config**: Security configuration
 
-### 2. Debug Steps
-- Check logs
-- Verify config
-- Test connections
-- Check permissions
-
-### 3. Recovery Steps
-- Reset environment
-- Reinstall dependencies
-- Restore database
-- Fix configuration
+### Maintenance Guides
+- **Update Procedures**: Setup update processes
+- **Backup Procedures**: Configuration backup
+- **Recovery Procedures**: Setup recovery processes
+- **Migration Guides**: Setup migration procedures
+- **Cleanup Procedures**: Setup cleanup processes
 
 ## References
-- [Python Setup Guide](https://docs.python.org/3/tutorial/venv.html)
-- [Docker Documentation](https://docs.docker.com/)
-- [PostgreSQL Guide](https://www.postgresql.org/docs/)
-- [VS Code Setup](https://code.visualstudio.com/docs)
-- [Git Workflow](https://git-scm.com/doc) 
+- [AGILE_SPECFIRST.md](../../framework/methodology/AGILE_SPECFIRST.md) - Core methodology
+- [VIBE_USER_GUIDE.md](../../framework/methodology/VIBE_USER_GUIDE.md) - User guidance
+- [CURSOR_INTEGRATION.md](../../framework/methodology/CURSOR_INTEGRATION.md) - IDE integration
+
+## Version Information
+- Version: 1.0.0
+- Last Updated: 2024-03-19
+- Status: Active 

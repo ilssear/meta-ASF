@@ -1,172 +1,23 @@
-# Copyright (c) 2025 Jaime Moraga (jmoraga@mines.edu)
-# All rights reserved.
-#
-# This file is part of Agile SpecFirst for Cursor.
-# Version: 1.0.0
-#
-# User Communication Guide
+# Communication Guidelines
 
-# User Communication Guide
-
-## Overview
-This guide provides comprehensive user communication instructions and best practices.
-
-## Communication Types
-
-### 1. User Interface
-- Error messages
-- Success messages
-- Loading states
-- Help text
-
-### 2. Documentation
-- User guides
-- API documentation
-- Tutorials
-- Examples
-
-### 3. Support
-- Help desk
-- FAQs
-- Troubleshooting
-- Contact information
-
-### 4. Feedback
-- User surveys
-- Bug reports
-- Feature requests
-- User testing
-
-## Communication Tools
-
-### 1. UI Components
-- Toast messages
-- Modal dialogs
-- Tooltips
-- Notifications
-
-### 2. Documentation Tools
-- Markdown
-- Sphinx
-- MkDocs
-- Docusaurus
-
-### 3. Support Tools
-- Help desk software
-- Knowledge base
-- Chat support
-- Email support
-
-### 4. Feedback Tools
-- Survey tools
-- Bug trackers
-- Feature request systems
-- User testing platforms
-
-## Communication Process
-
-### 1. Message Design
-- Clear structure
-- Logical grouping
-- Easy maintenance
-- Good documentation
-
-### 2. Message Writing
-- Clear language
-- Proper tone
-- Good practices
-- Error handling
-
-### 3. Message Delivery
-- Reliable delivery
-- Fast response
-- Good coverage
-- Clear reporting
-
-### 4. Message Maintenance
-- Regular updates
-- Version control
-- Documentation
-- Performance optimization
+This document outlines the communication guidelines for the project, ensuring that all interactions are clear, efficient, and aligned with the project's goals.
 
 ## Best Practices
+- **Be Specific:** Provide clear and detailed information in all communications.
+- **Stay on Topic:** Keep discussions focused on the relevant subject matter.
+- **Use Visuals:** Incorporate diagrams, mockups, and other visuals to aid understanding.
+- **Document Decisions:** Record all key decisions and their rationale.
 
-### 1. Message Organization
-- Clear structure
-- Logical grouping
-- Easy maintenance
-- Good documentation
+## Templates
+- **Bug Report:**
+  - **Title:** A brief, descriptive title.
+  - **Description:** Detailed steps to reproduce the bug.
+  - **Expected Behavior:** What should have happened.
+  - **Actual Behavior:** What actually happened.
+  - **Screenshots/Logs:** Any relevant attachments.
 
-### 2. Message Implementation
-- Clear language
-- Proper tone
-- Good practices
-- Error handling
-
-### 3. Message Delivery
-- Reliable delivery
-- Fast response
-- Good coverage
-- Clear reporting
-
-### 4. Message Maintenance
-- Regular updates
-- Version control
-- Documentation
-- Performance optimization
-
-## Examples
-
-### 1. Good Communication
-```python
-# Good error message
-def handle_error(error: Exception) -> str:
-    """Handle error and return user-friendly message."""
-    if isinstance(error, ValidationError):
-        return "Please check your input and try again."
-    elif isinstance(error, DatabaseError):
-        return "We're having trouble accessing the database. Please try again later."
-    elif isinstance(error, NetworkError):
-        return "We're having trouble connecting to the server. Please check your internet connection."
-    else:
-        return "An unexpected error occurred. Please try again or contact support."
-```
-
-### 2. Poor Communication
-```python
-# Poor error message
-def handle_error(error):
-    return str(error)
-```
-
-## Common Pitfalls
-
-### 1. Message Organization
-- Missing structure
-- Poor grouping
-- Hard maintenance
-- Bad documentation
-
-### 2. Message Implementation
-- Unclear language
-- Bad tone
-- Poor practices
-- No error handling
-
-### 3. Message Delivery
-- Unreliable delivery
-- Slow response
-- Poor coverage
-- Unclear reporting
-
-### 4. Message Maintenance
-- No updates
-- No version control
-- No documentation
-- No optimization
-
-## References
-- [User Interface Guidelines](https://material.io/design)
-- [Documentation Best Practices](https://www.writethedocs.org/guide/)
-- [Support Best Practices](https://www.zendesk.com/blog/)
-- [Feedback Best Practices](https://www.nngroup.com/articles/) 
+- **Feature Request:**
+  - **Title:** A brief, descriptive title.
+  - **Description:** A clear explanation of the proposed feature.
+  - **User Story:** Who needs this feature and why.
+  - **Acceptance Criteria:** How to verify the feature is implemented correctly. 

@@ -1,183 +1,100 @@
-# Copyright (c) 2025 Jaime Moraga (jmoraga@mines.edu)
-# All rights reserved.
-#
-# This file is part of Agile SpecFirst for Cursor.
-# Version: 1.0.0
-#
-# Best Practices Guide
+# Copyright (c) 2025, Jaime Moraga (jmoraga@mines.edu)
+
+# Framework Best Practices
 
 ## Overview
-This guide outlines the best practices for using the SpecFirst framework, ensuring consistent, high-quality development across all projects.
+This document provides an overview of best practices for implementing the SpecFirst Development Framework. These practices ensure consistent, high-quality development across all projects using the framework.
 
-## Core Best Practices
+## Key Principles
 
-### 1. Documentation-First Development
-- Start with clear specifications
-- Document all decisions
-- Keep documentation current
-- Use consistent formatting
-- Maintain cross-references
+### 1. Specification-First Development
+- Always start with complete specifications
+- Ensure specifications are LLM-regenerable
+- Validate specifications before implementation
+- Maintain specification-implementation alignment
 
-### 2. Specification Quality
-- Clear, unambiguous requirements
-- Complete user stories
-- Defined success criteria
-- Technical constraints documented
-- Edge cases considered
+### 2. Documentation-Driven Development
+- Treat documentation as first-class deliverables
+- Generate code from documentation
+- Keep documentation in sync with implementation
+- Use documentation as the source of truth
 
-### 3. Implementation Standards
-- Follow coding standards
-- Use provided templates
-- Implement error handling
-- Write comprehensive tests
-- Document code changes
+### 3. User-Centric Design
+- Focus on user workflows and needs
+- Design for end-user experience
+- Validate against user requirements
+- Prioritize usability over technical elegance
 
-### 4. Security Practices
-- Security-first mindset
-- Regular security reviews
-- Secure by default
-- Input validation
-- Access control
+### 4. Security-First Approach
+- Include security requirements in specifications
+- Implement secure by default
+- Regular security reviews and updates
+- Validate security measures
 
-### 5. Testing Strategy
-- Test-driven development
-- Comprehensive test coverage
-- Automated testing
-- Regular validation
-- User acceptance testing
+### 5. Quality Assurance
+- Comprehensive testing strategies
+- Automated validation
+- Code quality standards
+- Performance monitoring
 
-## Development Best Practices
+## Implementation Guidelines
 
-### 1. Project Structure
-- Follow standard layout
-- Use clear naming conventions
-- Organize by feature
-- Separate concerns
-- Maintain clean architecture
+### Specification Development
+- Use clear, unambiguous language
+- Include edge cases and error conditions
+- Define success criteria
+- Document assumptions and constraints
 
-### 2. Code Quality
+### Code Generation
+- Follow established patterns
+- Use consistent naming conventions
+- Implement proper error handling
+- Include comprehensive documentation
+
+### Testing Strategy
+- Unit tests for all components
+- Integration tests for workflows
+- End-to-end tests for user journeys
+- Security testing for all inputs
+
+### Documentation Standards
+- Consistent formatting and structure
+- Clear cross-references
+- Up-to-date examples
+- Version tracking
+
+## Best Practices by Category
+
+### Development Workflow
+- Follow the Agile SpecFirst methodology
+- Use iterative refinement
+- Regular stakeholder feedback
+- Continuous improvement
+
+### Code Quality
 - Follow style guides
-- Write clean code
-- Use type hints
-- Document functions
-- Handle errors properly
+- Use type hints and documentation
+- Implement proper error handling
+- Maintain code readability
 
-### 3. Version Control
-- Clear commit messages
-- Feature branches
-- Regular commits
-- Code reviews
-- Clean history
+### Security
+- Input validation and sanitization
+- Secure authentication and authorization
+- Data protection and privacy
+- Regular security audits
 
-### 4. Documentation
-- Keep docs updated
-- Use templates
-- Add examples
-- Include diagrams
-- Cross-reference
-
-### 5. Testing
-- Unit tests
-- Integration tests
-- End-to-end tests
-- Performance tests
-- Security tests
-
-## User Experience Best Practices
-
-### 1. Interface Design
-- User-centric design
-- Consistent patterns
-- Clear feedback
-- Error prevention
-- Accessibility
-
-### 2. Performance
-- Fast response times
-- Efficient operations
-- Resource optimization
-- Caching strategy
-- Load handling
-
-### 3. Error Handling
-- Clear error messages
-- Recovery options
-- User guidance
-- Logging
-- Monitoring
-
-### 4. Security
-- Secure authentication
-- Data protection
-- Access control
-- Input validation
-- Regular audits
-
-## Maintenance Best Practices
-
-### 1. Code Maintenance
-- Regular updates
-- Dependency management
-- Code cleanup
-- Performance optimization
-- Security patches
-
-### 2. Documentation
-- Keep current
-- Version control
-- Regular reviews
-- Update examples
-- Maintain references
-
-### 3. Testing
-- Regular test runs
-- Update test cases
-- Performance monitoring
-- Security scanning
-- User feedback
-
-### 4. Deployment
-- Automated deployment
-- Environment management
-- Backup strategy
-- Monitoring
-- Rollback plan
-
-## Tools and Resources
-
-### 1. Development Tools
-- IDE setup
-- Version control
-- Testing tools
-- Documentation tools
-- Security tools
-
-### 2. Monitoring Tools
-- Performance monitoring
-- Error tracking
-- User analytics
-- Security scanning
-- Log analysis
-
-### 3. Documentation Tools
-- Markdown editors
-- Diagram tools
-- Version control
-- Documentation generators
-- Validation tools
+### Performance
+- Optimize for user experience
+- Monitor resource usage
+- Implement caching strategies
+- Load testing and optimization
 
 ## References
-- [Specification Guide](specification_guide.md)
-- [Implementation Guide](implementation_guide.md)
-- [Deployment Guide](deployment_guide.md)
-- [Security Guide](../security/README.md)
-- [Style Guide](../style/README.md)
+- [AGILE_SPECFIRST.md](../methodology/AGILE_SPECFIRST.md) - Core methodology
+- [VIBE_USER_GUIDE.md](../methodology/VIBE_USER_GUIDE.md) - User guidance
+- [CURSOR_INTEGRATION.md](../methodology/CURSOR_INTEGRATION.md) - IDE integration
 
-## Additional Resources
-- [Agile SpecFirst Methodology](../methodology/AGILE_SPECFIRST.md)
-- [Vibe Coder's Guide](../methodology/VIBE_USER_GUIDE.md)
-- [Cursor Integration Guide](../methodology/CURSOR_INTEGRATION.md)
-- [Implementation Patterns](../patterns/README.md)
-- [Development Setup](../../development/setup/README.md)
-- [Workflow Guide](../../development/workflow/README.md)
-- [Testing Procedures](../../development/testing/README.md) 
+## Version Information
+- Version: 1.0.0
+- Last Updated: 2024-03-19
+- Status: Active 

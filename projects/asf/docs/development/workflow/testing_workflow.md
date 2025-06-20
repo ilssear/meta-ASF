@@ -1,171 +1,59 @@
-# Copyright (c) 2025 Jaime Moraga (jmoraga@mines.edu)
-# All rights reserved.
-#
-# This file is part of Agile SpecFirst for Cursor.
-# Version: 1.0.0
-#
-# Testing workflow guide.
+<!--
+Copyright (c) 2025, Jim Moran
+All rights reserved.
 
+This source code is licensed under the MIT-style license found in the
+LICENSE file in the root directory of this source tree. 
+-->
 # Testing Workflow Guide
 
-## Overview
-This guide provides comprehensive testing workflow instructions and best practices.
+This document defines the standard testing workflow for projects developed using the SpecFirst framework.
 
-## Testing Structure
+## 1. Philosophy
 
-### 1. Test Organization
-- Test modules
-- Test classes
-- Test functions
-- Test fixtures
+Testing is not a separate phase but an integral part of the development process. The goal is to ensure that the software meets the requirements defined in `SPECIFICATIONS.md` and is of high quality.
 
-### 2. Test Types
-- Unit tests
-- Integration tests
-- End-to-end tests
-- Performance tests
+## 2. Testing Levels
 
-### 3. Test Tools
-- Pytest
-- Coverage.py
-- Tox
-- Nox
+The testing workflow incorporates several levels of testing:
 
-### 4. Test Process
-- Test planning
-- Test execution
-- Test reporting
-- Test maintenance
+-   **Unit Testing**: Testing individual components in isolation.
+-   **Integration Testing**: Testing how different components work together.
+-   **End-to-End (E2E) Testing**: Testing complete user workflows.
+-   **Acceptance Testing**: Validating the software against user and business requirements.
 
-## Testing Implementation
+## 3. Testing Workflow Steps
 
-### 1. Test Design
-- Clear structure
-- Logical grouping
-- Easy maintenance
-- Good documentation
+### Step 1: Test Planning
 
-### 2. Test Writing
-- Clear naming
-- Proper setup
-- Good assertions
-- Error handling
+-   For each feature defined in `SPECIFICATIONS.md`, a set of test cases should be created.
+-   Test cases for all levels of testing should be considered.
+-   Test data required for the test cases should be identified and prepared.
 
-### 3. Test Execution
-- Reliable runs
-- Fast execution
-- Good coverage
-- Clear reporting
+### Step 2: Test Implementation
 
-### 4. Test Maintenance
-- Regular updates
-- Version control
-- Documentation
-- Performance optimization
+-   **Unit Tests**: Developers are responsible for writing unit tests for the code they produce. Unit tests should be written alongside the application code. See `docs/development/testing/unit_testing.md`.
+-   **Integration Tests**: These tests are created to verify interactions between components. See `docs/development/testing/integration_testing.md`.
+-   **E2E Tests**: These tests are based on user workflows and should be created as described in `docs/development/testing/e2e_testing.md`.
 
-## Best Practices
+### Step 3: Test Execution
 
-### 1. Test Organization
-- Clear structure
-- Logical grouping
-- Easy maintenance
-- Good documentation
+-   **Continuous Integration (CI)**: All unit and integration tests should be run automatically by the CI server on every commit.
+-   **Staging Environment**: E2E tests should be run in the staging environment before deploying to production.
+-   **Manual Testing**: Some scenarios may require manual testing, especially for exploratory testing and usability checks.
 
-### 2. Test Implementation
-- Clear naming
-- Proper setup
-- Good assertions
-- Error handling
+### Step 4: Defect Management
 
-### 3. Test Execution
-- Reliable runs
-- Fast execution
-- Good coverage
-- Clear reporting
+-   Any test failures or bugs found during testing should be reported in the project's issue tracking system.
+-   Each bug report should include:
+    -   A clear and descriptive title.
+    -   Steps to reproduce the bug.
+    -   The expected result vs. the actual result.
+    -   Any relevant logs or screenshots.
+-   The priority of the bug should be assessed, and it should be assigned to a developer for fixing.
 
-### 4. Test Maintenance
-- Regular updates
-- Version control
-- Documentation
-- Performance optimization
+## 4. Code Coverage
 
-## Examples
-
-### 1. Good Testing
-```python
-# Good test organization
-import pytest
-from typing import Dict
-
-class TestUserService:
-    """Test suite for user service."""
-    
-    @pytest.fixture
-    def user_data(self) -> Dict:
-        """Create test user data."""
-        return {
-            'username': 'testuser',
-            'email': 'test@example.com',
-            'password': 'secure123'
-        }
-    
-    def test_create_user(self, user_service, user_data):
-        """Test user creation with valid data."""
-        # Arrange
-        # Act
-        user = user_service.create_user(user_data)
-        
-        # Assert
-        assert user.username == user_data['username']
-        assert user.email == user_data['email']
-        assert user.is_active is True
-    
-    def test_create_user_invalid_data(self, user_service):
-        """Test user creation with invalid data."""
-        # Arrange
-        invalid_data = {'username': 'test'}
-        
-        # Act & Assert
-        with pytest.raises(ValidationError):
-            user_service.create_user(invalid_data)
-```
-
-### 2. Poor Testing
-```python
-# Poor test organization
-def test_user():
-    user = create_user('test', 'test@test.com', '123')
-    assert user is not None
-```
-
-## Common Pitfalls
-
-### 1. Test Organization
-- Missing structure
-- Poor grouping
-- Hard maintenance
-- Bad documentation
-
-### 2. Test Implementation
-- Unclear naming
-- Bad setup
-- Weak assertions
-- No error handling
-
-### 3. Test Execution
-- Unreliable runs
-- Slow execution
-- Poor coverage
-- Unclear reporting
-
-### 4. Test Maintenance
-- No updates
-- No version control
-- No documentation
-- No optimization
-
-## References
-- [Pytest Documentation](https://docs.pytest.org/)
-- [Python Testing Guide](https://docs.python.org/3/library/unittest.html)
-- [Test Design Patterns](https://martinfowler.com/bliki/TestDouble.html)
-- [Testing Best Practices](https://martinfowler.com/articles/practical-test-pyramid.html) 
+-   The project should aim for a high level of code coverage for unit tests.
+-   Code coverage reports should be generated as part of the CI process to track progress.
+-   While 100% coverage is not always practical, critical parts of the application should be thoroughly tested. 

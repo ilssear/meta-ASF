@@ -1,198 +1,143 @@
-# Copyright (c) 2025 Jaime Moraga (jmoraga@mines.edu)
-# All rights reserved.
-#
-# This file is part of Agile SpecFirst for Cursor.
-# Version: 1.0.0
-#
-# Development workflow guide.
+# Copyright (c) 2025, Jaime Moraga (jmoraga@mines.edu)
 
-# Development Workflow Guide
+# Development Workflow
 
 ## Overview
-This guide provides comprehensive development workflow instructions and best practices.
+This document provides an overview of development workflows for the SpecFirst Development Framework. These workflows ensure consistent, efficient, and high-quality development processes across all projects.
 
-## Workflow Types
+## Workflow Categories
 
-### 1. Development Workflow
-- Code organization
-- Version control
-- Code review
-- Testing
+### 1. Project Setup Workflow
+Complete process for initializing new projects with the SpecFirst framework.
 
-### 2. Testing Workflow
-- Test planning
-- Test execution
-- Test reporting
-- Test maintenance
+### 2. Development Workflow
+Day-to-day development process for implementing features and maintaining code.
 
-### 3. Deployment Workflow
-- Environment setup
-- Build process
-- Deployment steps
-- Monitoring
+### 3. Testing Workflow
+Comprehensive testing process to ensure quality and validate against specifications.
 
-### 4. Documentation Workflow
-- Documentation planning
-- Documentation writing
-- Documentation review
-- Documentation maintenance
+### 4. Deployment Workflow
+Process for deploying applications and managing releases.
 
-## Workflow Tools
+## Core Workflow Principles
 
-### 1. Development Tools
-- Git
-- VS Code
-- PyCharm
-- Docker
+### 1. Specification-First
+- All development starts with specifications
+- Specifications drive implementation decisions
+- Regular specification validation and updates
+- Maintain specification-implementation alignment
 
-### 2. Testing Tools
-- Pytest
-- Coverage.py
-- Tox
-- Nox
+### 2. Documentation-Driven
+- Documentation guides all development activities
+- Code is generated from documentation
+- Keep documentation in sync with implementation
+- Use documentation as the source of truth
 
-### 3. Deployment Tools
-- Docker
-- Kubernetes
-- CI/CD
-- Monitoring
+### 3. Iterative Development
+- Incremental feature development
+- Regular feedback and validation
+- Continuous improvement
+- Version-controlled changes
 
-### 4. Documentation Tools
-- Markdown
-- Sphinx
-- MkDocs
-- Docusaurus
+### 4. Quality Assurance
+- Comprehensive testing at all levels
+- Automated validation and checks
+- Code quality standards
+- Security and performance validation
 
-## Workflow Process
+## Workflow Integration
 
-### 1. Development Process
-- Code planning
-- Code writing
-- Code review
-- Code maintenance
+### Tool Integration
+- **Version Control**: Git-based workflow
+- **IDE Integration**: Cursor IDE with AI assistance
+- **Automation**: CI/CD pipeline integration
+- **Documentation**: Automated generation and validation
+- **Testing**: Automated test execution
 
-### 2. Testing Process
-- Test planning
-- Test execution
-- Test reporting
-- Test maintenance
+### Team Collaboration
+- **Code Review**: Peer review process
+- **Documentation Review**: Specification validation
+- **Testing Collaboration**: Shared test development
+- **Deployment Coordination**: Release management
+- **Knowledge Sharing**: Best practice documentation
 
-### 3. Deployment Process
-- Environment setup
-- Build process
-- Deployment steps
-- Monitoring
+### Quality Gates
+- **Specification Review**: Validate requirements
+- **Code Review**: Ensure quality and standards
+- **Testing Validation**: Verify functionality
+- **Security Review**: Check for vulnerabilities
+- **Documentation Review**: Ensure completeness
 
-### 4. Documentation Process
-- Documentation planning
-- Documentation writing
-- Documentation review
-- Documentation maintenance
+## Workflow Automation
 
-## Best Practices
+### Automated Processes
+- **Documentation Generation**: From specifications
+- **Code Generation**: From documentation
+- **Testing Execution**: Automated test suites
+- **Quality Checks**: Linting and validation
+- **Deployment**: Automated deployment pipeline
 
-### 1. Development Practices
-- Clear structure
-- Logical grouping
-- Easy maintenance
-- Good documentation
+### Manual Processes
+- **Specification Creation**: Human-driven requirements
+- **Code Review**: Human validation
+- **User Testing**: Human feedback
+- **Stakeholder Review**: Business validation
+- **Release Approval**: Human decision making
 
-### 2. Testing Practices
-- Clear naming
-- Proper setup
-- Good assertions
-- Error handling
+## Workflow Metrics
 
-### 3. Deployment Practices
-- Reliable runs
-- Fast execution
-- Good coverage
-- Clear reporting
+### Performance Metrics
+- **Development Velocity**: Features per iteration
+- **Quality Metrics**: Bug rates and test coverage
+- **Documentation Quality**: Completeness and accuracy
+- **User Satisfaction**: Feedback and adoption rates
+- **Process Efficiency**: Time to completion
 
-### 4. Documentation Practices
-- Regular updates
-- Version control
-- Documentation
-- Performance optimization
+### Success Criteria
+- **Specification Completeness**: All requirements documented
+- **Implementation Quality**: Code meets standards
+- **Testing Coverage**: Comprehensive validation
+- **Documentation Accuracy**: Up-to-date and complete
+- **User Satisfaction**: Meets user needs
 
-## Examples
+## Workflow Customization
 
-### 1. Good Workflow
-```bash
-# Development workflow
-git checkout -b feature/new-feature
-# Make changes
-git add .
-git commit -m "feat: add new feature"
-git push origin feature/new-feature
-# Create pull request
-# Code review
-# Merge to main
+### Project-Specific Adaptation
+- **Scale Adaptation**: Adjust for project size
+- **Complexity Adaptation**: Modify for project complexity
+- **Team Adaptation**: Adjust for team size and skills
+- **Technology Adaptation**: Modify for technology stack
+- **Domain Adaptation**: Adjust for business domain
 
-# Testing workflow
-pytest tests/
-coverage run -m pytest
-coverage report
-coverage html
+### Continuous Improvement
+- **Process Review**: Regular workflow assessment
+- **Feedback Integration**: Incorporate lessons learned
+- **Tool Enhancement**: Improve automation and tools
+- **Training Updates**: Keep team skills current
+- **Best Practice Updates**: Incorporate new practices
 
-# Deployment workflow
-docker build -t app:latest .
-docker push app:latest
-kubectl apply -f k8s/
-kubectl rollout status deployment/app
+## Workflow Documentation
 
-# Documentation workflow
-mkdocs build
-mkdocs serve
-mkdocs gh-deploy
-```
+### Process Documentation
+- **Step-by-Step Guides**: Detailed workflow instructions
+- **Decision Points**: Clear decision criteria
+- **Quality Gates**: Validation checkpoints
+- **Escalation Procedures**: Issue resolution process
+- **Success Criteria**: Clear outcome definitions
 
-### 2. Poor Workflow
-```bash
-# Development workflow
-git add .
-git commit -m "changes"
-git push
-
-# Testing workflow
-python -m pytest
-
-# Deployment workflow
-docker build .
-docker run
-
-# Documentation workflow
-echo "Updated docs" > README.md
-```
-
-## Common Pitfalls
-
-### 1. Development Pitfalls
-- Missing structure
-- Poor grouping
-- Hard maintenance
-- Bad documentation
-
-### 2. Testing Pitfalls
-- Unclear naming
-- Bad setup
-- Weak assertions
-- No error handling
-
-### 3. Deployment Pitfalls
-- Unreliable runs
-- Slow execution
-- Poor coverage
-- Unclear reporting
-
-### 4. Documentation Pitfalls
-- No updates
-- No version control
-- No documentation
-- No optimization
+### Tool Documentation
+- **Configuration Guides**: Tool setup and configuration
+- **Usage Instructions**: How to use tools effectively
+- **Troubleshooting**: Common issues and solutions
+- **Integration Guides**: Tool interconnection
+- **Best Practices**: Optimal tool usage
 
 ## References
-- [Git Workflow](https://git-scm.com/doc)
-- [Docker Guide](https://docs.docker.com/)
-- [Kubernetes Docs](https://kubernetes.io/docs/)
-- [MkDocs Guide](https://www.mkdocs.org/) 
+- [AGILE_SPECFIRST.md](../../framework/methodology/AGILE_SPECFIRST.md) - Core methodology
+- [VIBE_USER_GUIDE.md](../../framework/methodology/VIBE_USER_GUIDE.md) - User guidance
+- [CURSOR_INTEGRATION.md](../../framework/methodology/CURSOR_INTEGRATION.md) - IDE integration
+
+## Version Information
+- Version: 1.0.0
+- Last Updated: 2024-03-19
+- Status: Active 

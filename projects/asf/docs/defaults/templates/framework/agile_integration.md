@@ -1,62 +1,36 @@
-# Copyright (c) 2025 Jaime Moraga (jmoraga@mines.edu)
-# All rights reserved.
-#
-# This file is part of Agile SpecFirst for Cursor.
-# Version: 1.0.0
-#
-# Agile Integration Template
+<!--
+Copyright (c) 2025, Jim Moran
+All rights reserved.
 
+This source code is licensed under the MIT-style license found in the
+LICENSE file in the root directory of this source tree. 
+-->
 # Agile Integration Guide
 
-## Overview
-This guide outlines how to integrate the SpecFirst framework with Agile methodologies.
+This document outlines how the SpecFirst methodology integrates with Agile development practices.
 
 ## Core Principles
-1. Specification-First Development
-2. Documentation-Driven Development
-3. Security-First Approach
-4. User Experience Focus
 
-## Integration Points
-1. Sprint Planning
-   - Specification refinement
-   - Task breakdown
-   - Estimation
-   - Priority setting
+- **Specifications as User Stories**: Treat `SPECIFICATIONS.md` as the source of truth for user stories and feature definitions.
+- **Iterative Refinement**: Refine specifications in each sprint based on feedback and evolving requirements.
+- **Continuous Alignment**: Ensure development work stays aligned with the approved specifications throughout the sprint.
 
-2. Daily Standups
-   - Progress tracking
-   - Blockers identification
-   - Specification updates
-   - Documentation status
+## Workflow
 
-3. Sprint Reviews
-   - Specification validation
-   - Documentation review
-   - User feedback
-   - Quality assessment
+1. **Sprint Planning**:
+   - Review and prioritize features from `SPECIFICATIONS.md`.
+   - Break down specifications into smaller, manageable tasks.
+   - Estimate effort for implementation and testing.
 
-4. Retrospectives
-   - Process improvement
-   - Tool effectiveness
-   - Documentation quality
-   - Team collaboration
+2. **Sprint Execution**:
+   - Developers implement features based on the detailed specifications.
+   - The AI assistant acts as a `Specification Engineering Partner` to clarify any ambiguities.
+   - Regular check-ins ensure alignment between implementation and specification.
 
-## Best Practices
-1. Start with specifications
-2. Maintain documentation
-3. Regular reviews
-4. Continuous improvement
-5. Team collaboration
+3. **Sprint Review**:
+   - Demonstrate completed features against the specifications.
+   - Gather feedback from stakeholders to refine the specifications for the next iteration.
 
-## Common Pitfalls
-1. Skipping specifications
-2. Incomplete documentation
-3. Poor communication
-4. Missing reviews
-5. Inadequate planning
-
-## References
-- See docs/framework/methodology/AGILE_SPECFIRST.md
-- See docs/framework/best_practices/implementation_guide.md
-- See docs/development/workflow/development_workflow.md 
+4. **Retrospective**:
+   - Discuss how well the SpecFirst process worked within the sprint.
+   - Identify areas for improvement in the specification and development workflow. 

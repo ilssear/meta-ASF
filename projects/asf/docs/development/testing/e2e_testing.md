@@ -1,172 +1,48 @@
-# Copyright (c) 2025 Jaime Moraga (jmoraga@mines.edu)
-# All rights reserved.
-#
-# This file is part of Agile SpecFirst for Cursor.
-# Version: 1.0.0
-#
-# End-to-end testing guide.
+<!--
+Copyright (c) 2025, Jim Moran
+All rights reserved.
 
-# End-to-End Testing Guide
+This source code is licensed under the MIT-style license found in the
+LICENSE file in the root directory of this source tree. 
+-->
+# End-to-End (E2E) Testing Guide
 
-## Overview
-This guide provides comprehensive end-to-end testing instructions and best practices.
+This document provides guidelines for conducting end-to-end (E2E) testing for projects developed using the SpecFirst framework.
 
-## E2E Testing Structure
+## 1. What is E2E Testing?
 
-### 1. Test Organization
-- Test modules
-- Test classes
-- Test functions
-- Test fixtures
+End-to-end testing is a methodology used to test whether the flow of an application from start to finish is behaving as expected. The purpose of E2E testing is to identify system dependencies and to ensure that data integrity is maintained between various system components and systems.
 
-### 2. Test Types
-- User flow tests
-- System tests
-- Performance tests
-- Security tests
+## 2. E2E Testing in the SpecFirst Framework
 
-### 3. Test Tools
-- Selenium
-- Playwright
-- Cypress
-- Puppeteer
+In the SpecFirst framework, E2E tests are derived directly from the user workflows defined in `SPECIFICATIONS.md`. Each E2E test case should represent a complete user journey.
 
-### 4. Test Process
-- Test planning
-- Test writing
-- Test execution
-- Test maintenance
+## 3. Creating E2E Test Cases
 
-## E2E Testing Implementation
+1.  **Identify User Workflows**: Review the `User Workflows` section in `SPECIFICATIONS.md`. Each defined workflow is a candidate for an E2E test.
+2.  **Define Test Steps**: For each workflow, break it down into a sequence of user actions and system responses.
+3.  **Specify Expected Outcomes**: For each step, define the expected outcome. This includes changes in the UI, data state, or system behavior.
+4.  **Cover Edge Cases**: Consider alternative paths, error conditions, and edge cases for each workflow.
 
-### 1. Test Design
-- Clear structure
-- Logical grouping
-- Easy maintenance
-- Good documentation
+## 4. Example E2E Test Case
 
-### 2. Test Writing
-- Clear naming
-- Proper setup
-- Good assertions
-- Error handling
+**Workflow**: User Registration and Login
 
-### 3. Test Execution
-- Reliable runs
-- Fast execution
-- Good coverage
-- Clear reporting
+| Step | User Action                               | Expected Outcome                                        |
+|------|-------------------------------------------|---------------------------------------------------------|
+| 1    | Navigate to the registration page.        | The registration form is displayed.                     |
+| 2    | Fill in the registration form with valid data. | The form is submitted successfully.                      |
+| 3    | Submit the form.                          | A confirmation message is shown.                        |
+| 4    | Navigate to the login page.               | The login form is displayed.                            |
+| 5    | Enter the newly created credentials.      | The user is successfully logged in.                     |
+| 6    | Log in.                                   | The user is redirected to the dashboard.                |
 
-### 4. Test Maintenance
-- Regular updates
-- Version control
-- Documentation
-- Performance optimization
+## 5. Tools for E2E Testing
 
-## Best Practices
+For web applications, consider using tools like:
 
-### 1. Test Organization
-- Clear structure
-- Logical grouping
-- Easy maintenance
-- Good documentation
+-   **Selenium**: A powerful browser automation tool.
+-   **Cypress**: A modern, all-in-one testing framework.
+-   **Playwright**: A framework for web testing and automation.
 
-### 2. Test Implementation
-- Clear naming
-- Proper setup
-- Good assertions
-- Error handling
-
-### 3. Test Execution
-- Reliable runs
-- Fast execution
-- Good coverage
-- Clear reporting
-
-### 4. Test Maintenance
-- Regular updates
-- Version control
-- Documentation
-- Performance optimization
-
-## Examples
-
-### 1. Good E2E Testing
-```python
-def test_user_registration_flow():
-    """Test complete user registration flow."""
-    # Arrange
-    driver = webdriver.Chrome()
-    driver.get('http://localhost:3000')
-    
-    try:
-        # Act - Navigate to registration
-        driver.find_element(By.LINK_TEXT, 'Register').click()
-        
-        # Act - Fill registration form
-        driver.find_element(By.NAME, 'username').send_keys('testuser')
-        driver.find_element(By.NAME, 'email').send_keys('test@example.com')
-        driver.find_element(By.NAME, 'password').send_keys('secure123')
-        driver.find_element(By.NAME, 'confirm_password').send_keys('secure123')
-        
-        # Act - Submit form
-        driver.find_element(By.CSS_SELECTOR, 'button[type="submit"]').click()
-        
-        # Assert - Check success message
-        success_message = driver.find_element(By.CLASS_NAME, 'alert-success')
-        assert 'Registration successful' in success_message.text
-        
-        # Assert - Check redirect
-        assert '/dashboard' in driver.current_url
-        
-        # Assert - Check user data
-        profile_link = driver.find_element(By.LINK_TEXT, 'Profile')
-        profile_link.click()
-        assert driver.find_element(By.CLASS_NAME, 'username').text == 'testuser'
-        
-    finally:
-        driver.quit()
-```
-
-### 2. Poor E2E Testing
-```python
-def test_registration():
-    driver = webdriver.Chrome()
-    driver.get('http://localhost:3000/register')
-    driver.find_element(By.NAME, 'username').send_keys('test')
-    driver.find_element(By.CSS_SELECTOR, 'button').click()
-    assert 'success' in driver.page_source
-    driver.quit()
-```
-
-## Common Pitfalls
-
-### 1. Test Organization
-- Missing structure
-- Poor grouping
-- Hard maintenance
-- Bad documentation
-
-### 2. Test Implementation
-- Unclear naming
-- Bad setup
-- Weak assertions
-- No error handling
-
-### 3. Test Execution
-- Unreliable runs
-- Slow execution
-- Poor coverage
-- Unclear reporting
-
-### 4. Test Maintenance
-- No updates
-- No version control
-- No documentation
-- No optimization
-
-## References
-- [Selenium Documentation](https://www.selenium.dev/documentation/)
-- [Playwright Guide](https://playwright.dev/python/docs/intro)
-- [Cypress Documentation](https://docs.cypress.io/)
-- [Testing Best Practices](https://martinfowler.com/articles/practical-test-pyramid.html) 
+The choice of tool should be documented in the project's `docs/development/testing/README.md`. 

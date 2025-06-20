@@ -27,6 +27,277 @@ This document outlines unit testing practices and procedures for the SpecFirst f
 - Proper teardown
 - Meaningful failures
 
+### 4. Test-Driven Development (TDD)
+- Write tests before implementation
+- Follow Red-Green-Refactor cycle
+- Use tests to guide design
+- Maintain test coverage
+- Refactor with confidence
+
+## TDD Workflow
+
+### Red-Green-Refactor Cycle
+
+#### 1. Red Phase: Write Failing Test
+```python
+# Example: Adding new functionality
+def test_parse_source_files_from_spec():
+    """Test parsing source files from SPECIFICATIONS.md."""
+    # Arrange
+    test_project = Path("test_project")
+    test_project.mkdir(exist_ok=True)
+    spec_content = """
+    ## Implementation Requirements
+    - methodology/AGILE_SPECFIRST.md
+    - defaults/environment.json
+    """
+    (test_project / "SPECIFICATIONS.md").write_text(spec_content)
+    
+    # Act
+    parser = SpecParser(test_project)
+    result = parser.parse_source_files()
+    
+    # Assert
+    assert "methodology/AGILE_SPECFIRST.md" in result
+    assert "defaults/environment.json" in result
+    assert len(result) == 2
+```
+
+#### 2. Green Phase: Write Minimal Implementation
+```python
+# Minimal implementation to make test pass
+def parse_source_files(self) -> List[str]:
+    """Parse SPECIFICATIONS.md to find required source files."""
+    if not self.specs_file.is_file():
+        return []
+    
+    content = self.specs_file.read_text(encoding='utf-8')
+    lines = content.splitlines()
+    
+    required_files = []
+    for line in lines:
+        if "methodology/" in line and line.strip().startswith("-"):
+            match = re.search(r"methodology/[^\s]+\.md", line)
+            if match:
+                required_files.append(match.group(0))
+    
+    return required_files
+```
+
+#### 3. Refactor Phase: Clean Up Code
+```python
+# Refactored implementation
+def parse_source_files(self) -> List[str]:
+    """Parse SPECIFICATIONS.md to find required source files."""
+    if not self.specs_file.is_file():
+        return []
+    
+    content = self.specs_file.read_text(encoding='utf-8')
+    return self._extract_source_files_from_content(content)
+
+def _extract_source_files_from_content(self, content: str) -> List[str]:
+    """Extract source file paths from SPECIFICATIONS.md content."""
+    required_files = []
+    lines = content.splitlines()
+    
+    for line in lines:
+        if self._is_source_file_line(line):
+            file_path = self._extract_file_path(line)
+            if file_path:
+                required_files.append(file_path)
+    
+    return required_files
+
+def _is_source_file_line(self, line: str) -> bool:
+    """Check if line contains a source file reference."""
+    return any(pattern in line for pattern in ["methodology/", "defaults/", "scripts/"]) and line.strip().startswith("-")
+
+def _extract_file_path(self, line: str) -> Optional[str]:
+    """Extract file path from line."""
+    patterns = [
+        r"methodology/[^\s]+\.md",
+        r"defaults/[^\s]+\.(?:json|py|md)",
+        r"scripts/[^\s]+\.py"
+    ]
+    
+    for pattern in patterns:
+        match = re.search(pattern, line)
+        if match:
+            return match.group(0)
+    
+    return None
+```
+
+### TDD Best Practices
+
+#### 1. Start with the Simplest Test
+```python
+# Start simple
+def test_parser_initialization():
+    """Test SpecParser can be initialized."""
+    parser = SpecParser(Path("test_project"))
+    assert parser is not None
+
+# Then add complexity
+def test_parser_with_nonexistent_spec():
+    """Test parser handles missing SPECIFICATIONS.md."""
+    parser = SpecParser(Path("nonexistent"))
+    result = parser.parse_source_files()
+    assert result == []
+```
+
+#### 2. Test Edge Cases
+```python
+def test_parser_with_empty_spec():
+    """Test parser handles empty SPECIFICATIONS.md."""
+    test_project = Path("test_project")
+    test_project.mkdir(exist_ok=True)
+    (test_project / "SPECIFICATIONS.md").write_text("")
+    
+    parser = SpecParser(test_project)
+    result = parser.parse_source_files()
+    assert result == []
+
+def test_parser_with_malformed_spec():
+    """Test parser handles malformed SPECIFICATIONS.md."""
+    test_project = Path("test_project")
+    test_project.mkdir(exist_ok=True)
+    (test_project / "SPECIFICATIONS.md").write_text("Invalid content")
+    
+    parser = SpecParser(test_project)
+    result = parser.parse_source_files()
+    assert result == []
+```
+
+#### 3. Test-Driven Refactoring
+```python
+# Before refactoring, ensure tests cover current behavior
+def test_parser_maintains_behavior_after_refactor():
+    """Test that refactoring doesn't break existing functionality."""
+    test_project = Path("test_project")
+    test_project.mkdir(exist_ok=True)
+    spec_content = """
+    ## Implementation Requirements
+    - methodology/AGILE_SPECFIRST.md
+    - defaults/environment.json
+    """
+    (test_project / "SPECIFICATIONS.md").write_text(spec_content)
+    
+    # Test before refactor
+    parser_old = SpecParserOld(test_project)
+    result_old = parser_old.parse_source_files()
+    
+    # Test after refactor
+    parser_new = SpecParserNew(test_project)
+    result_new = parser_new.parse_source_files()
+    
+    # Assert same behavior
+    assert result_old == result_new
+```
+
+### TDD Workflow Checklist
+
+#### Before Writing Code
+- [ ] Write a failing test for the new feature
+- [ ] Ensure test describes the expected behavior
+- [ ] Run test to confirm it fails (Red phase)
+
+#### During Implementation
+- [ ] Write minimal code to make test pass
+- [ ] Run test to confirm it passes (Green phase)
+- [ ] Refactor code while keeping tests green
+- [ ] Add more test cases for edge cases
+
+#### After Implementation
+- [ ] All tests pass
+- [ ] Code is clean and readable
+- [ ] No duplication
+- [ ] Documentation updated
+
+### Common TDD Mistakes to Avoid
+
+#### 1. Writing Too Much Code at Once
+```python
+# ❌ Bad: Writing complex implementation without tests
+def parse_specifications(self):
+    """Complex implementation without tests."""
+    # 50 lines of untested code
+    pass
+
+# ✅ Good: Small, testable increments
+def test_parse_simple_spec():
+    """Test simple specification parsing."""
+    # Write test first
+    pass
+
+def parse_simple_spec(self):
+    """Simple implementation to make test pass."""
+    # Minimal implementation
+    pass
+```
+
+#### 2. Not Testing Error Conditions
+```python
+# ❌ Bad: Only testing happy path
+def test_parse_specifications():
+    """Only tests successful parsing."""
+    # Missing error case tests
+
+# ✅ Good: Test both success and failure
+def test_parse_specifications_success():
+    """Test successful parsing."""
+    pass
+
+def test_parse_specifications_file_not_found():
+    """Test handling of missing file."""
+    pass
+
+def test_parse_specifications_invalid_format():
+    """Test handling of invalid format."""
+    pass
+```
+
+#### 3. Skipping the Refactor Phase
+```python
+# ❌ Bad: Code works but is messy
+def parse_files(self):
+    """Working but messy code."""
+    if self.specs_file.is_file():
+        content = self.specs_file.read_text()
+        lines = content.splitlines()
+        files = []
+        for line in lines:
+            if "methodology/" in line and line.strip().startswith("-"):
+                match = re.search(r"methodology/[^\s]+\.md", line)
+                if match:
+                    files.append(match.group(0))
+        return files
+    return []
+
+# ✅ Good: Clean, refactored code
+def parse_files(self):
+    """Clean, well-structured code."""
+    if not self.specs_file.is_file():
+        return []
+    
+    content = self.specs_file.read_text()
+    return self._extract_files_from_content(content)
+
+def _extract_files_from_content(self, content: str) -> List[str]:
+    """Extract files from content."""
+    return [
+        match.group(0)
+        for line in content.splitlines()
+        if self._is_methodology_file_line(line)
+        for match in [re.search(r"methodology/[^\s]+\.md", line)]
+        if match
+    ]
+
+def _is_methodology_file_line(self, line: str) -> bool:
+    """Check if line contains methodology file reference."""
+    return "methodology/" in line and line.strip().startswith("-")
+```
+
 ## Test Structure
 
 ### 1. Basic Test
