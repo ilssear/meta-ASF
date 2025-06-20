@@ -1,0 +1,48 @@
+# Copyright (c) 2025, Jaime Moraga (jmoraga@mines.edu)
+
+# WebApp Logo Interpreter
+
+## What is WebApp Logo Interpreter?
+WebApp Logo Interpreter is a minimalist, browser-based Logo interpreter. It allows users to write Logo code on the left side and see the drawing on the right side. The app is designed to be simple, user-friendly, and accessible directly from the user's computer.
+
+## Features
+- **Code Editor**: A simple text area on the left for writing Logo code.
+- **Canvas**: A drawing area on the right where the Logo commands are executed.
+- **Interpreter**: An interpreter that reads the Logo commands and executes them (including drawing in the canvas).
+- **Run**: A button to execute the code from the editor. 
+- **Reset**: A button to reset the code editor and canvas.
+- **Load**: A button to load previously saved Logo code.
+- **Save**: A button to save the current Logo code.
+- **Clear Canvas**: A button to clear the canvas and reset the turtle cursor.
+
+## How It Works
+1. **Write Code**: Users write Logo commands in the code editor.
+2. **Execute**: The app interprets the commands and draws on the canvas.
+3. **Reset**: Users can reset the code and canvas to start fresh.
+4. **Load/Save**: Users can load or save their Logo code for later use.
+
+## Commands
+1. v1: Implement basic commands: fd, lt, rt, pu, pd
+2. v2: Implement extended commands: bk, ht, st
+3. v3: Implement missing commands: Home, repeat
+
+## Project Structure
+- `src/`: Contains the source code for the application.
+  - `index.html`: The main HTML file for the web app.
+  - `style.css`: CSS for styling the app.
+  - `script.js`: JavaScript for the Logo interpreter logic.
+- `test/`: Contains test files for the application.
+- `README.md`: Instructions for setting up and using the app.
+
+## Getting Started
+1. Open `src/index.html` in a web browser.
+2. Write Logo commands in the code editor.
+3. Use the buttons to reset, load, save, or clear the canvas.
+
+## Why It Works
+- **Simplicity**: Minimalist design makes it easy to use.
+- **Accessibility**: Runs directly in the browser on the user's computer.
+- **Functionality**: Provides essential features for a Logo interpreter.
+
+## References
+- `README.md`: Setup and usage instructions. 

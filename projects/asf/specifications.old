@@ -1,0 +1,720 @@
+# Copyright (c) 2025, Jaime Moraga (jmoraga@mines.edu)
+
+# SpecFirst Development Framework
+
+## Project Overview
+Create a framework for implementing the Agile SpecFirst methodology within the Cursor IDE environment, focusing on practical, runnable proof-of-concept projects. The framework will guide users through an iterative process of creating, refining, and implementing software specifications, with smart defaults and clear guidance to handle unknowns. The goal is to get users from idea to running project as quickly and smoothly as possible.
+
+## Core Concepts
+- Documentation-first development
+- Specification-driven implementation
+- Technology-agnostic methodology
+- User-centric design
+- Security-first approach
+
+### What is a Specification?
+A specification in SpecFirst is a structured document that describes:
+1. What the software should do (functional requirements)
+2. How it should behave (behavioral requirements)
+3. What it should look like (visual requirements)
+4. How it should perform (performance requirements)
+5. How it should be secure (security requirements)
+
+### Specification Format
+Specifications must follow this structure:
+1. Project Overview
+   - Purpose
+   - Target users
+   - Key features
+   - Success criteria
+
+2. Functional Requirements
+   - User stories
+   - Feature descriptions
+   - Input/output specifications
+   - Data models
+
+3. Behavioral Requirements
+   - User workflows
+   - State transitions
+   - Error handling
+   - Edge cases
+
+4. Visual Requirements
+   - UI/UX design
+   - Layout specifications
+   - Visual feedback
+   - Responsive design
+
+5. Performance Requirements
+   - Response times
+   - Resource usage
+   - Scalability
+   - Load handling
+
+6. Security Requirements
+   - Authentication
+   - Authorization
+   - Data protection
+   - Input validation
+
+## Methodology Definition
+The Agile SpecFirst methodology is a development approach that emphasizes:
+1. Specification-first development: All development starts with comprehensive specifications
+2. Documentation-driven implementation: Code is generated from validated specifications
+3. Iterative refinement: Specifications evolve through continuous feedback and testing
+4. User-centric validation: All specifications are validated against user needs
+5. Cross-platform compatibility: Specifications are technology-agnostic
+6. Beginner-friendly approach: Accessible to non-technical users while powerful for experts
+7. Practical focus: Emphasis on working, runnable projects
+8. Smart defaults: Intelligent handling of technical decisions
+
+The methodology documentation and vibe-user guide are in:
+- methodology/AGILE_SPECFIRST.md - Core methodology documentation
+- methodology/VIBE_USER_GUIDE.md - Beginner-friendly guide
+- methodology/CURSOR_INTEGRATION.md - Cursor IDE integration details
+
+## Target Users
+
+### 1. Vibe Coders (Primary Focus)
+- Creative individuals with great ideas but no coding experience
+- Need intuitive, visual approach to software development
+- Want to focus on the "vibe" and user experience
+- Prefer plain language over technical terms
+- Value step-by-step guidance
+- Need templates and examples
+- Want to learn as they build
+- Need working projects quickly
+- Trust smart defaults
+- Prefer iterative development
+
+### 2. Software Development Teams
+- Need structured approach to requirements gathering
+- Want to reduce rework and improve code quality
+- Require clear documentation for maintenance
+- Can leverage advanced features
+- Need team collaboration tools
+- Require version control integration
+- Want automated validation
+- Need working prototypes
+- Use smart defaults as starting points
+- Follow iterative process
+
+### 3. Project Managers
+- Need clear project scope definition
+- Want to track progress against specifications
+- Require measurable success criteria
+- Need team coordination tools
+- Want progress tracking
+- Require resource planning
+- Need risk management
+- Need working demos
+- Use default templates
+- Track iterations
+
+### 4. Individual Developers
+- Need guidance on specification creation
+- Want to ensure implementation matches requirements
+- Require clear documentation for future reference
+- Can use advanced features
+- Need code generation tools
+- Want testing automation
+- Require deployment guides
+- Need working examples
+- Customize defaults
+- Iterate quickly
+
+## Core Components
+
+### 1. Documentation Structure
+- /docs/ as the source of truth
+  - Framework documentation
+  - Implementation guides
+  - Best practices
+  - Troubleshooting guides
+  - Vibe Coder's Guide (VIBE_USER_GUIDE.md)
+  - Default configurations
+  - Example projects
+- .cursorrules as the implementation guide
+  - Development rules
+  - Coding standards
+  - Process workflows
+  - Beginner-friendly templates
+  - Smart defaults
+  - Iteration guides
+- SPECIFICATIONS.md as the project definition
+  - Complete project requirements
+  - User stories
+  - Technical constraints
+  - Success criteria
+  - Visual mockups
+  - Default settings
+  - Iteration history
+- README.md as the user interface
+  - Quick start guide
+  - Installation instructions
+  - Usage examples
+  - Troubleshooting steps
+  - Visual tutorials
+  - Default options
+  - Run instructions
+
+### 2. Key Principles
+- Documentation-first development
+  - All development starts with documentation
+  - Documentation is the source of truth
+  - Code is generated from documentation
+  - Plain language preferred
+  - Smart defaults included
+- Specification-driven implementation
+  - Clear requirements before coding
+  - Validation against specifications
+  - Traceability between specs and code
+  - Visual specification tools
+  - Default implementations
+- Cross-platform compatibility
+  - Technology-agnostic specifications
+  - Multiple implementation options
+  - Platform-specific adaptations
+  - Visual platform selection
+  - Default platforms
+- User-centric design
+  - Focus on user needs
+  - Clear user workflows
+  - Usability testing
+  - Visual feedback
+  - Default layouts
+- Security-first approach
+  - Security requirements in specs
+  - Secure by default
+  - Regular security reviews
+  - Automated security checks
+  - Default security settings
+- Beginner-friendly approach
+  - Step-by-step guidance
+  - Visual templates
+  - Plain language
+  - Interactive tutorials
+  - Smart defaults
+- Practical focus
+  - Working projects
+  - Quick results
+  - Clear outcomes
+  - Default configurations
+  - Run instructions
+- Iterative development
+  - Continuous improvement
+  - Regular testing
+  - Version tracking
+  - Default iterations
+  - Progress tracking
+
+## Implementation Requirements
+
+### Development Environment
+The framework's development environment configuration is defined in `defaults/environment.json`. This file contains all environment-specific settings and is used to generate the appropriate configuration for different contexts.
+
+### Documentation Organization
+- Framework documentation in /docs/framework/
+  - Methodology overview (REQUIRED)
+  - Best practices (REQUIRED)
+  - Implementation patterns (REQUIRED)
+  - Troubleshooting guides (REQUIRED)
+  - Vibe Coder's Guide (REQUIRED)
+  - Style guides (OPTIONAL)
+  - Example projects (REQUIRED)
+- Development guides in /docs/development/
+  - Setup instructions (REQUIRED)
+  - Workflow guides (REQUIRED)
+  - Testing procedures (REQUIRED)
+  - Tool integration (OPTIONAL)
+  - Visual tutorials (REQUIRED)
+  - Run guides (REQUIRED)
+- User preferences in /docs/user/
+  - Core preferences (REQUIRED)
+  - Communication guidelines (REQUIRED)
+  - Configuration options (User-generated)
+  - Customization guides (User-generated)
+  - User-specific settings (User-generated)
+- Default configurations in /docs/defaults/
+  - Standard templates (REQUIRED)
+  - Testing templates (REQUIRED)
+  - Copyright templates (REQUIRED)
+  - API templates (OPTIONAL)
+  - Security templates (OPTIONAL)
+  - Framework templates (OPTIONAL)
+  - Settings templates (OPTIONAL)
+
+### File Structure
+```
+project_root/
+├── .cursorrules             # Development framework rules
+├── SPECIFICATIONS.md        # Project definition
+├── README.md               # Framework overview and usage
+├── .gitignore              # Standard exclusions
+├── docs/                   # Framework documentation
+    ├── framework/          # Core framework documentation
+    │   ├── methodology/    # Required methodology docs
+    │   ├── best_practices/ # Required best practices
+    │   ├── patterns/       # Required patterns
+    │   └── style/          # Optional style guides
+    ├── development/        # Development documentation
+    │   ├── setup/          # Required setup docs
+    │   ├── workflow/       # Required workflow docs
+    │   ├── testing/        # Required testing docs
+    │   └── documentation/  # Required doc guidelines
+    ├── user/               # User documentation
+    │   ├── preferences/    # Required preferences
+    │   ├── communication/  # Required communication
+    │   ├── config/         # User-generated config
+    │   └── custom/         # User-generated custom
+    └── defaults/           # Default configurations
+        └── templates/      # Various templates
+            ├── copyright/  # Required copyright
+            ├── testing/    # Required testing
+            ├── config/     # Required config
+            ├── api/        # Optional API
+            ├── security/   # Optional security
+            ├── framework/  # Optional framework
+            └── settings/   # Optional settings
+```
+
+### Version Strategy
+- v1/: Complete reference implementation
+  - Working example
+  - Best practices
+  - Common patterns
+  - Visual examples
+  - Default settings
+  - Run instructions
+- v2+/: Specification-only projects
+  - Focus on specifications
+  - Implementation guides
+  - Validation tools
+  - Visual templates
+  - Default configs
+  - Run guides
+- Documentation as source of truth
+  - Single source of truth
+  - Version control
+  - Change tracking
+  - Visual history
+  - Default versions
+  - Run history
+- Implementation generated from specs
+  - Automated generation
+  - Manual implementation
+  - Hybrid approach
+  - Visual generation
+  - Default generation
+  - Run generation
+
+## Success Criteria
+1. Clear documentation hierarchy
+   - All documentation is properly organized
+   - Easy to find information
+   - Consistent structure
+   - Visual navigation
+   - Default organization
+   - Run documentation
+2. Consistent implementation patterns
+   - Standardized approaches
+   - Reusable components
+   - Best practices
+   - Visual patterns
+   - Default patterns
+   - Run patterns
+3. Cross-platform compatibility
+   - Works on all platforms
+   - Consistent behavior
+   - Platform-specific adaptations
+   - Visual platform selection
+   - Default platforms
+   - Run platforms
+4. User-friendly interface
+   - Intuitive navigation
+   - Clear instructions
+   - Helpful feedback
+   - Visual guides
+   - Default interface
+   - Run interface
+5. Secure by default
+   - Security built-in
+   - Regular updates
+   - Vulnerability management
+   - Visual security checks
+   - Default security
+   - Run security
+6. Beginner-friendly approach
+   - Easy to understand
+   - Step-by-step guidance
+   - Visual tutorials
+   - Plain language
+   - Default guidance
+   - Run guidance
+7. Practical focus
+   - Working projects
+   - Quick results
+   - Clear outcomes
+   - Default projects
+   - Run projects
+8. Iterative development
+   - Continuous improvement
+   - Regular testing
+   - Version tracking
+   - Default iterations
+   - Run iterations
+
+## Technical Constraints
+- Must work in Cursor IDE
+  - IDE integration
+  - Plugin support
+  - Extension capabilities
+  - Visual interface
+  - Default IDE
+  - Run IDE
+- Must be cross-platform
+  - Windows support
+  - macOS support
+  - Linux support
+  - Visual platform selection
+  - Default platform
+  - Run platform
+- Must be git-compatible
+  - Version control
+  - Branch management
+  - Merge strategies
+  - Visual git interface
+  - Default git
+  - Run git
+- Must be documentation-driven
+  - Documentation first
+  - Code generation
+  - Validation tools
+  - Visual documentation
+  - Default docs
+  - Run docs
+- Must be beginner-friendly
+  - Plain language
+  - Visual guides
+  - Step-by-step tutorials
+  - Interactive help
+  - Default help
+  - Run help
+- Must be practical
+  - Working projects
+  - Quick results
+  - Clear outcomes
+  - Default projects
+  - Run projects
+- Must be iterative
+  - Continuous improvement
+  - Regular testing
+  - Version tracking
+  - Default iterations
+  - Run iterations
+
+## User Workflows
+
+### 1. Vibe Coder Workflow
+1. Project Initialization
+   - Choose project template
+   - Set up visual environment
+   - Configure basic settings
+   - Use default options
+   - Run setup
+2. Specification Creation
+   - Use visual templates
+   - Draw interface mockups
+   - Write plain language specs
+   - Use default specs
+   - Run specs
+3. Implementation
+   - Use visual code generation
+   - Follow guided steps
+   - Apply visual patterns
+   - Use default code
+   - Run code
+4. Validation
+   - Run visual tests
+   - Check user experience
+   - Get visual feedback
+   - Use default tests
+   - Run tests
+5. Maintenance
+   - Update visual docs
+   - Refine visual specs
+   - Improve visual design
+   - Use default updates
+   - Run updates
+
+### 2. Experienced Developer Workflow
+1. Project Initialization
+   - Create project structure
+   - Set up documentation
+   - Configure environment
+   - Customize defaults
+   - Run setup
+2. Specification Creation
+   - Define requirements
+   - Create user stories
+   - Document constraints
+   - Modify defaults
+   - Run specs
+3. Implementation
+   - Generate code
+   - Follow patterns
+   - Apply best practices
+   - Customize code
+   - Run code
+4. Validation
+   - Test against specs
+   - Verify requirements
+   - Document results
+   - Customize tests
+   - Run tests
+5. Maintenance
+   - Update documentation
+   - Refine specifications
+   - Improve implementation
+   - Customize updates
+   - Run updates
+
+## Questions to Resolve
+1. How to handle platform-specific implementations?
+   - Platform detection
+   - Adaptation strategies
+   - Fallback options
+   - Visual platform selection
+   - Default platform
+   - Run platform
+2. What is the minimum viable documentation set?
+   - Required documents
+   - Optional documents
+   - Documentation templates
+   - Visual templates
+   - Default docs
+   - Run docs
+3. How to ensure specification completeness?
+   - Validation tools
+   - Review process
+   - Completeness criteria
+   - Visual validation
+   - Default validation
+   - Run validation
+4. How to validate implementation against specs?
+   - Testing framework
+   - Validation tools
+   - Success metrics
+   - Visual testing
+   - Default testing
+   - Run testing
+5. How to handle version control strategy?
+   - Branch strategy
+   - Release process
+   - Version numbering
+   - Visual version control
+   - Default versioning
+   - Run versioning
+
+## Next Steps
+1. Define complete documentation structure
+   - Document templates
+   - Content guidelines
+   - Update process
+   - Visual structure
+   - Default structure
+   - Run structure
+2. Create implementation guidelines
+   - Coding standards
+   - Best practices
+   - Tool integration
+   - Visual guidelines
+   - Default guidelines
+   - Run guidelines
+3. Establish version control strategy
+   - Branch management
+   - Release process
+   - Version control
+   - Visual versioning
+   - Default versioning
+   - Run versioning
+4. Define success metrics
+   - Measurement tools
+   - Success criteria
+   - Progress tracking
+   - Visual metrics
+   - Default metrics
+   - Run metrics
+5. Create validation framework
+   - Testing tools
+   - Validation process
+   - Quality metrics
+   - Visual validation
+   - Default validation
+   - Run validation
+
+## Open Issues
+1. Documentation synchronization
+   - Update process
+   - Version control
+   - Change tracking
+   - Visual sync
+   - Default sync
+   - Run sync
+2. Implementation verification
+   - Testing framework
+   - Validation tools
+   - Success metrics
+   - Visual verification
+   - Default verification
+   - Run verification
+3. Cross-platform testing
+   - Test environments
+   - Platform coverage
+   - Compatibility testing
+   - Visual testing
+   - Default testing
+   - Run testing
+4. User preference management
+   - Configuration storage
+   - Preference sync
+   - Default settings
+   - Visual preferences
+   - Default preferences
+   - Run preferences
+5. Security considerations
+   - Security review
+   - Vulnerability management
+   - Update process
+   - Visual security
+   - Default security
+   - Run security
+
+## References
+- Cursor IDE documentation
+  - API reference
+  - Integration guide
+  - Best practices
+  - Visual guides
+  - Default guides
+  - Run guides
+- Git best practices
+  - Workflow patterns
+  - Branch strategy
+  - Release process
+  - Visual git
+  - Default git
+  - Run git
+- Documentation-driven development
+  - Methodology guide
+  - Best practices
+  - Tools and techniques
+  - Visual documentation
+  - Default documentation
+  - Run documentation
+- Agile methodology
+  - Principles
+  - Practices
+  - Tools
+  - Visual agile
+  - Default agile
+  - Run agile
+- Cross-platform development
+  - Platform differences
+  - Compatibility
+  - Testing strategies
+  - Visual platforms
+  - Default platforms
+  - Run platforms 
+
+  ## Documentation Copyrights
+  - Use generic copyright notices inside the documentation. Prompt the use for default values.
+  Example: # Copyright (c) [Year], [Full Name] ([Email Address])
+
+## Continuous Improvement and Integration
+
+### Continuous Integration (CI)
+- The CI pipeline MUST run the documentation checker script (`scripts/check_docs.py`) on every commit and before each release.
+- This script parses `SPECIFICATIONS.md` to extract all required documentation file paths and checks for their existence in the repository.
+- The build MUST fail if any required documentation file is missing.
+- This ensures that the documentation structure always matches the specification and prevents incomplete releases.
+- Developers MUST update documentation and rerun the script after any change to `SPECIFICATIONS.md` or the documentation structure.
+
+### Continuous Improvement
+- Continuous Improvement is an ongoing process of making incremental enhancements to the project, including code quality, documentation, user experience, and team workflows.
+- Regular retrospectives, feedback sessions, and process optimizations are essential.
+- The methodology and documentation should evolve over time based on lessons learned and user feedback.
+
+## User Preferences
+- **docs/user/communication/** and **docs/user/preferences/** contain valid, pre-populated documents that guide communication and user preferences.
+- **docs/user/config/** and **docs/user/custom/** are intentionally left empty to allow users and teams to create their own rules and configurations.
+
+# specifications.txt – Project Structure and Documentation Domains
+
+## Project Structure
+
+project_root/
+├── .cursorrules                # Development framework rules
+├── SPECIFICATIONS.md           # Authoritative project specification
+├── README.md                   # Project overview and navigation
+├── .gitignore                  # Standard exclusions
+├── docs/                       # All documentation
+│   ├── framework/              # Core methodology, patterns, best practices
+│   │   ├── methodology/        # Agile SpecFirst methodology docs
+│   │   ├── best_practices/     # Framework-level best practices
+│   │   ├── patterns/           # Design patterns and templates
+│   │   └── style/              # Style guides
+│   ├── development/            # Project implementation, workflows, stack
+│   │   ├── workflow/           # Implementation workflows (dev, test, deploy)
+│   │   ├── testing/            # Implementation-specific testing docs
+│   │   ├── setup/              # Environment and project setup
+│   │   └── documentation/      # Project documentation guidelines
+│   ├── defaults/               # Templates and default configs
+│   │   ├── templates/          # Code/documentation templates
+│   │   └── settings/           # Default settings
+│   └── user/                   # User-specific documentation
+│       ├── communication/      # Communication guidelines
+│       ├── preferences/        # User preferences
+│       ├── config/             # User configuration
+│       └── custom/             # User customizations
+└── projects/                   # User-created PoCs/Projects
+    └── <project_name>/         # Each project: src/, tests/, examples/
+
+## Documentation Domains
+
+| Area         | Directory            | Purpose                                      |
+|--------------|---------------------|----------------------------------------------|
+| Framework    | docs/framework/      | Core methodology, patterns, best practices   |
+| Development  | docs/development/    | Project implementation, workflows, stack     |
+| Defaults     | docs/defaults/       | Templates and default settings               |
+| User         | docs/user/           | User-specific documentation                  |
+
+- **Framework documentation**: Technology-agnostic, covers methodology, patterns, and best practices for all projects.
+- **Development documentation**: Technology-specific, covers how to implement projects using the framework.
+- **Defaults**: Templates and default settings for quick project setup.
+- **User**: User-specific documentation, including communication, preferences, and customizations.
+
+## Copyright Header Rules
+- Documentation files (Markdown): **Do NOT** include copyright header at the top.
+- Code templates (Python, etc.): **MUST** include: `# Copyright (c) 2025, Jaime Moraga (jmoraga@mines.edu)` at the top.
+
+## See SPECIFICATIONS.md for authoritative requirements and file statuses.
+
+## Workflow Definitions
+See methodology/AGILE_SPECFIRST.md for detailed workflow definitions and methodology/EXAMPLE_SPECIFICATIONS.md for practical examples of each workflow.
+
+The core workflows include:
+1. Initial Project Setup
+2. Feature Addition
+3. Bug Fix
+4. Documentation Update
+5. Code Review
+6. Testing
+7. Security Review
+
+For detailed workflow steps, triggers, and examples, refer to:
+- methodology/AGILE_SPECFIRST.md - Core workflow definitions
+- methodology/EXAMPLE_SPECIFICATIONS.md - Practical workflow examples
+- methodology/VIBE_USER_GUIDE.md - User-focused workflow guidance
+- methodology/CURSOR_INTEGRATION.md - IDE-specific workflow details

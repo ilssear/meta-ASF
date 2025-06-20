@@ -1,0 +1,70 @@
+{
+    "development_environment": {
+        "python": {
+            "version": "3.8",
+            "min_version": "3.8",
+            "max_version": "3.12"
+        },
+        "package_managers": {
+            "primary": {
+                "name": "mamba",
+                "commands": {
+                    "create": "mamba create -n {env_name} python={python_version}",
+                    "activate": "mamba activate {env_name}",
+                    "install": "mamba install {package_name}",
+                    "verify": "mamba env list"
+                }
+            },
+            "fallback": {
+                "name": "pip",
+                "commands": {
+                    "create": "python -m venv {env_name}",
+                    "activate": "source {env_name}/bin/activate",
+                    "activate_windows": "{env_name}\\Scripts\\activate",
+                    "install": "pip install {package_name}",
+                    "verify": "pip -V"
+                }
+            }
+        },
+        "ide": {
+            "name": "Cursor",
+            "version": "latest",
+            "extensions": [
+                "Python",
+                "Git",
+                "Markdown"
+            ]
+        },
+        "development_tools": {
+            "testing": {
+                "framework": "pytest",
+                "version": "latest"
+            },
+            "type_checking": {
+                "tool": "mypy",
+                "version": "latest"
+            },
+            "formatting": {
+                "tool": "black",
+                "version": "latest"
+            },
+            "linting": {
+                "tool": "flake8",
+                "version": "latest"
+            }
+        },
+        "version_control": {
+            "system": "git",
+            "commands": {
+                "clone": "git clone {repository_url}",
+                "config": "git config --list"
+            }
+        },
+        "verification_commands": {
+            "python_version": "python --version",
+            "environment": "mamba env list || pip -V",
+            "packages": "pip list",
+            "git_config": "git config --list"
+        }
+    }
+} 

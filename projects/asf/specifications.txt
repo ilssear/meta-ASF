@@ -1,0 +1,92 @@
+# Copyright (c) 2025, Jaime Moraga (jmoraga@mines.edu)
+
+# SpecFirst Development Framework
+
+## What is SpecFirst?
+SpecFirst is a development framework that helps you build software the right way, from the start. It's like having a blueprint before building a house - you plan everything first, then build.
+
+## The Problem We Solve
+Most software projects fail because they start coding before they know what they're building. This leads to:
+- Wasted time fixing things that could have been planned better
+- Projects that don't do what users need
+- Code that's hard to maintain
+- Security issues that could have been prevented
+
+## The Solution
+SpecFirst helps you:
+1. Write clear specifications before coding
+2. Get AI help to build exactly what you specified
+3. Keep your project organized and maintainable
+4. Build secure, reliable software
+
+## How It Works
+
+### 1. Write Your Specification
+Start with a simple document that describes:
+- What your software should do
+- How it should work
+- What it should look like
+- How it should perform
+- How it should be secure
+
+### 2. Get AI Help
+The AI assistant (that's me) will:
+- Help you refine your specification
+- Guide you through the development process
+- Generate code from your specification
+- Keep everything organized
+
+### 3. Build Your Project
+With your specification as a guide, you'll:
+- Have a clear plan to follow
+- Know exactly what to build
+- Get help when you need it
+- End up with working software
+
+## Who Is This For?
+
+### For Beginners
+- No coding experience needed
+- Plain language specifications
+- Step-by-step guidance
+- Visual templates
+- Smart defaults
+
+### For Developers
+- Clear project structure
+- Best practices built-in
+- Automated validation
+- Code generation
+- Testing framework
+
+### For Teams
+- Shared understanding
+- Clear documentation
+- Version control
+- Collaboration tools
+- Progress tracking
+
+## Project Structure
+Every SpecFirst project has:
+- specifications.txt - Your project plan (in plain English or your native language)
+- SPECIFICATIONS.md - Your project plan but more formal after coaching and support from the AI
+
+## Getting Started
+1. Write your specification
+2. Get AI help to refine it
+3. Start building
+4. Get help when needed
+
+## Why It Works
+- Clear requirements = better software
+- Documentation-first = fewer mistakes
+- AI assistance = faster development
+- Smart defaults = less work
+- Built-in best practices = better results
+- Cleaner documentation and code = it can be taken over by experts and other third parties
+
+## References
+- methodology/AGILE_SPECFIRST.md - How it works
+- methodology/VIBE_USER_GUIDE.md - For beginners
+- methodology/CURSOR_INTEGRATION.md - IDE setup
+- methodology/SPECIFICATION_VALIDATION.md - Quality checks

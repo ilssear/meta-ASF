@@ -1,0 +1,63 @@
+{
+    "project_metadata": {
+        "year": "2025",
+        "author": "Jaime Moraga",
+        "email": "jmoraga@mines.edu",
+        "organization": "Colorado School of Mines",
+        "license": "MIT"
+    },
+    "documentation": {
+        "specification_format": {
+            "version": "1.0.0",
+            "required_sections": [
+                "Project Overview",
+                "Functional Requirements",
+                "Behavioral Requirements",
+                "Visual Requirements",
+                "Performance Requirements",
+                "Security Requirements"
+            ]
+        },
+        "file_templates": {
+            "specifications": "SPECIFICATIONS.md",
+            "readme": "README.md",
+            "rules": ".cursorrules"
+        }
+    },
+    "framework": {
+        "name": "Agile SpecFirst",
+        "version": "1.0.0",
+        "last_updated": "2025-06-14",
+        "core_components": [
+            "Documentation",
+            "Specifications",
+            "Implementation",
+            "Testing",
+            "Deployment"
+        ]
+    },
+    "development": {
+        "default_language": "python",
+        "code_style": {
+            "docstring_format": "Google",
+            "type_hints": true,
+            "max_line_length": 88,
+            "copyright_header": true
+        },
+        "testing": {
+            "framework": "pytest",
+            "coverage_threshold": 80
+        }
+    },
+    "security": {
+        "sensitive_files": [
+            "config.json",
+            ".env",
+            "secrets.json"
+        ],
+        "template_files": [
+            "config.json.template",
+            ".env.template"
+        ]
+    }
+} 
